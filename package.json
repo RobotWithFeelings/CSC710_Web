@@ -1,0 +1,25 @@
+{
+  "name": "nassweb",
+  "version": "1.0.0",
+  "description": "Website for nass reqplication",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobotWithFeelings/nassWeb.git"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "Matthew Neal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobotWithFeelings/nassWeb/issues"
+  },
+  "homepage": "https://github.com/RobotWithFeelings/nassWeb#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
