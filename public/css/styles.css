@@ -186,6 +186,23 @@ p {
 	text-align:center;	
 }
 
+#review_score {
+	padding-top: 30px;
+	padding-left: 40px;
+	padding-bottom: 20px;
+	font-size: 18px;
+	color: #4a4a4a;
+	font-family:"arial";
+}
+
+#review_question {
+	padding-top: 20px;
+	padding-left: 40px;
+	font-size: 18px;
+	color: #4a4a4a;
+	font-family:"arial";
+}
+
 #copyright {
 	padding-top: 3px;
 	padding-left: 600px;

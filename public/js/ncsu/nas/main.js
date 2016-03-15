@@ -5,6 +5,7 @@ var Main = (function() {
 	var loader_time = 0;
 	var current_fact = 0;
 	var current_question = 0;
+	var current_review_questions =0;
 	var facts = [];
 	var questions = [];
 	
@@ -28,6 +29,9 @@ var Main = (function() {
 		$("#transitionScoringBtn").button();
 		$("#transitionScoringBtn").click(onTransitionScoringHandler);
 		
+		$("#reviewBtn").button();
+		$("#reviewBtn").click(onReviewHandler);
+		
 		$("#welcome").show();
 		$("#loader_facts").hide();
 		$("#loader_questions").hide();		
@@ -35,6 +39,8 @@ var Main = (function() {
 		$("#transition").hide();	
 		$("#questions").hide();
 		$("#transition_scoring").hide();
+		$("#scoring").hide();
+		//showScoring();
 		
 	}
 	
@@ -177,12 +183,40 @@ var Main = (function() {
 		$("#transition_scoring").animate( { opacity: '0' }, ( transition_time / 2 ), function()
 		{
 			$("#transition_scoring").hide();
-			// so evluation
+				showScoring();
 		} );
 	}
 	
+	function showScoring() {			
+		var str = "Question " + ( current_review_questions + 1 ) + ":";
+		$("#questionNumberA").text( str );		
+		$("#questionA").html( questions[current_review_questions].text );
+		$("#questionReviewA").html( questions[current_review_questions].feedback  );		
+		current_review_questions++;
+		
+		str = "Question " + ( current_review_questions + 1 ) + ":";
+		$("#questionNumberB").text( str );		
+		$("#questionB").html( questions[current_review_questions].text );
+		$("#questionReviewB").html( questions[current_review_questions].feedback );
+		current_review_questions++;
+		
+		$("#scoring").css( "opacity", "0");
+		$("#scoring").show();
+		$("#scoring").animate( { opacity: '1' }, transition_time );			
+	}	
 	
-	
+	function onReviewHandler(){
+		// end of questions, show eval form
+		if( current_review_questions == questions.length ){
+			$("#scoring").animate( { opacity: '0' }, ( transition_time / 2 ), function()
+			{
+				$("#scoring").hide();
+				// so interview questionnaire
+			} );				
+		}else {
+			showScoring();			
+		}		
+	}
 	
 	//----------------------
 	
@@ -210,9 +244,9 @@ var Main = (function() {
 	}
 		
 	function init_questions() {
-		questions[0] = { "text" : "Which state most international students apply to for college?", "answer_0" : "Texas", "answer_1" : "Maine", "answer_2" : "Illinois", "answer_3" : "California", "answer_4" : "New York" };
-		/*questions[1] = { "text" : "What percentage of the school's financial aid fund goes to affluent students?", "answer_0" : "10%", "answer_1" : "20%", "answer_2" : "30%", "answer_3" : "40%", "answer_4" : "50%" };
-		questions[2] = { "text" : "What percentage of entering class is international?", "answer_0" : "5%", "answer_1" : "10%", "answer_2" : "15%", "answer_3" : "20%", "answer_4" : "25%" };
+		questions[0] = { "text" : "Which state most international students apply to for college?", "answer_0" : "Texas", "answer_1" : "Maine", "answer_2" : "Illinois", "answer_3" : "California", "answer_4" : "New York", "feedback" : "Correct!" };
+		questions[1] = { "text" : "What percentage of the school's financial aid fund goes to affluent students?", "answer_0" : "10%", "answer_1" : "20%", "answer_2" : "30%", "answer_3" : "40%", "answer_4" : "50%", "feedback" : "Correct again!"  };
+		/*questions[2] = { "text" : "What percentage of entering class is international?", "answer_0" : "5%", "answer_1" : "10%", "answer_2" : "15%", "answer_3" : "20%", "answer_4" : "25%" };
 		questions[3] = { "text" : "Most students attend college no more than how many away from their home town?", "answer_0" : "100 miles", "answer_1" : "500 miles", "answer_2" : "1,000 miles", "answer_3" : "1,500 miles", "answer_4" : "2,000 miles" };
 		questions[4] = { "text" : "How many hours a week do high school students spend studying?", "answer_0" : "1 hour", "answer_1" : "3 hours", "answer_2" : "6 hours", "answer_3" : "12 hours", "answer_4" : "18 hours" };
 		questions[5] = { "text" : "What fraction of students report that they felt overwhelmed at college?", "answer_0" : "A quarter", "answer_1" : "A third", "answer_2" : "Half", "answer_3" : "Two thirds", "answer_4" : "Three quarters" };*/
