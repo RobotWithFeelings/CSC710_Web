@@ -17,14 +17,45 @@
 		$(document).ready(function() {
 			logger.isDebug(true);			
 			logger.log( "let's build a website");
-		});			
+			
+			$("#welcome").show();
+			$("#loader_facts").hide();
+			$("#loader_questions").hide();		
+		});
+
+		$(function() {
+			$( "input[type=submit], a, button" )
+			.button()
+			.click(function( event ) {
+				event.preventDefault();
+				
+				$("#welcome").hide();
+				$("#loader_questions").show();				
+				
+			});
+		});
+		
 	</script>
-	<title>Welcome to NASai</title>	
+	<title>Welcome | NAS Learning Solutions</title>	
 </head>
 <body>	
 	<div id="container">
 		<div id="logo"></div>
 		<div id="content">
+			<div id="loader_facts" class="loader">
+				<div class="loader_text">Choosing Next Fact...</div>
+			</div>
+			<div id="loader_questions" class="loader">
+				<div class="loader_text">Choosing Next Question...</div>
+			</div>
+			<div id="welcome">
+				<div class="welcomeTitle">Welcome.</div>
+				<div class="welcomeBody"><p>Thank you for coming here today. Today, you will be working with this computer. This computer is designed to help you learn information. The computer will begin by providing you with a fact. After reading the fact, you should use the mouse to indicate how familiar you are with that particular fact. The computer will then select the next fact, based on your level of familliarity with the previous fact. In other words, the more you know about the topic associated with a fact, the less likely you will be to receive additional facts on that topic. You will receive a total of 20 facts, chosen from a list of 1,000 possible facts.</p>
+				
+				<p>After completing the tutoring session, you will take a test. The test will involve 12 multiple-choice questions, randomly chosen from a set of 5,000 questions. The Computer will then evaluate your performance on the test, and evaluate its own performance as a tutor.</div>
+				<div id="welcomeBtn"><button>Begin</button></div>
+			</div>
+			
 			
 		</div>
 		<div id="copyright">© copyright NAS Learning Solutions 2016</div>

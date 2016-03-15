@@ -1,8 +1,13 @@
 html, body {
 	margin:0px;
 	min-width: 810px;
-	min-height: 750px;
+	font-family: "arial";
+	overflow:hidden;
 	background-color: #f6f6f6;
+}
+
+p {
+	padding: 5px;
 }
 
 #container {	
@@ -34,6 +39,58 @@ html, body {
 	background-repeat: no-repeat;
 }
 
+.loader {
+	width: 400px;
+	height: 300px;
+	margin-right: auto;
+	margin-left: auto;
+	background-image: url("../images/hex-loader.gif");
+	background-repeat: no-repeat;
+	background-position: right 65px;
+	color: #4a4a4a;
+}
+
+.loader_text {
+	text-align:center;
+	font-family: "arial";
+	font-size: 14px;
+	padding-top: 260px;
+}
+
+#welcome {
+	z-index: 1;	
+}
+
+#loader_facts {
+	z-index: 2;	
+}
+
+#loader_questions {
+	z-index: 3;	
+}
+
+#welcomeBtn {
+	padding-top: 20px;
+	text-align:center;	
+}
+
+
+.welcomeTitle {
+	padding-top: 70px;
+	padding-left: 40px;
+	color: #4a4a4a;
+	font-size: 48px;	
+}
+
+.welcomeBody {
+	padding-top: 40px;
+	padding-left: 40px;
+	padding-right: 15px;
+	color: #4a4a4a;
+	font-size: 18px;	
+}
+
+
 
 #copyright {
 	padding-top: 3px;
@@ -41,11 +98,6 @@ html, body {
 	height: auto;
 	color: #4a4a4a;
 	font-size: 0.7em;
-}
-
-#buttons {
-	padding-top:5px;
-	float:right;
 }
 
 #filterInput {
