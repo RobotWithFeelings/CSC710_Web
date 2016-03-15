@@ -22,11 +22,15 @@ var Main = (function() {
 		$("#transitionBtn").button();
 		$("#transitionBtn").click(onTransitionHandler);	
 		
+		$("#questionBtn").button();
+		$("#questionBtn").click(onQuestionHandler);
+		
 		$("#welcome").show();
 		$("#loader_facts").hide();
 		$("#loader_questions").hide();		
 		$("#facts").hide();	
 		$("#transition").hide();	
+		$("#questions").hide();
 	}
 	
 	function onFactHandler() {
@@ -118,14 +122,45 @@ var Main = (function() {
 		$("#transition").animate( { opacity: '1' }, transition_time );		
 	}
 
-	function showQuestion() {
+	function onQuestionHandler() {
+		if( $('input[name=radio]').is(":checked") ) {		
+			current_question++;
 			
+			// end of questions, show eval form
+			if( current_question == questions.length ){
+				$("#questions").animate( { opacity: '0' }, ( transition_time / 2 ), function()
+				{
+					$('input[name=radio]').prop ('checked', false);
+					$("#questions").hide();
+					// show eval form here
+				} );				
+			}else {
+				$("#questions").animate( { opacity: '0' }, ( transition_time / 2 ), function()
+				{
+					$('input[name=radio]').prop ('checked', false);
+					$("#questions").hide();
+					showQuestionLoader();
+				} );
+			}			
+		}
+	}
+	
+	function showQuestion() {			
+		var str = "Question " + ( current_question + 1 ) + " of " + questions.length;
+		$("#questionNumber").text( str );		
+		$("#question_text").html( questions[current_question].text );
+		
+		// fill in question text
+		
+		$("#questions").css( "opacity", "0");
+		$("#questions").show();
+		$("#questions").animate( { opacity: '1' }, transition_time );			
 	}	
 	
 	function init_facts() {
 		facts[0] = "76% of students get into their first choice college.";
-		facts[1] = "75% of the colleges and universities in the U.S. are <br>East of the Mississippi River.";
-		/*facts[2] = "Being an athlete increases your chances of being accepted.";
+		/*facts[1] = "75% of the colleges and universities in the U.S. are <br>East of the Mississippi River.";
+		facts[2] = "Being an athlete increases your chances of being accepted.";
 		facts[3] = "In their senior year, 46.5 percent of the students frequently or occasionally fell asleep in class.";
 		facts[4] = "Tuition increases so that those who can pay full price subsidize the cost for those who cannot.";
 		facts[5] = "Forty-two percent of freshmen expect to earn a master's degree.";
@@ -147,18 +182,13 @@ var Main = (function() {
 		
 	function init_questions() {
 		questions[0] = { "text" : "Which state most international students apply to for college?", "answer_0" : "Texas", "answer_1" : "Maine", "answer_2" : "Illinois", "answer_3" : "California", "answer_4" : "New York" };
+		questions[1] = { "text" : "What percentage of the school's financial aid fund goes to affluent students?", "answer_0" : "10%", "answer_1" : "20%", "answer_2" : "30%", "answer_3" : "40%", "answer_4" : "50%" };
+		questions[2] = { "text" : "What percentage of entering class is international?", "answer_0" : "5%", "answer_1" : "10%", "answer_2" : "15%", "answer_3" : "20%", "answer_4" : "25%" };
+		questions[3] = { "text" : "Most students attend college no more than how many away from their home town?", "answer_0" : "100 miles", "answer_1" : "500 miles", "answer_2" : "1,000 miles", "answer_3" : "1,500 miles", "answer_4" : "2,000 miles" };
+		questions[4] = { "text" : "How many hours a week do high school students spend studying?", "answer_0" : "1 hour", "answer_1" : "3 hours", "answer_2" : "6 hours", "answer_3" : "12 hours", "answer_4" : "18 hours" };
+		questions[5] = { "text" : "What fraction of students report that they felt overwhelmed at college?", "answer_0" : "A quarter", "answer_1" : "A third", "answer_2" : "Half", "answer_3" : "Two thirds", "answer_4" : "Three quarters" };
 		
-		/*questions[1] = "75% of the colleges and universities in the U.S. are <br>East of the Mississippi River.";
-		questions[2] = "Being an athlete increases your chances of being accepted.";
-		questions[3] = "In their senior year, 46.5 percent of the students frequently or occasionally fell asleep in class.";
-		questions[4] = "Tuition increases so that those who can pay full price subsidize the cost for those who cannot.";
-		questions[5] = "Forty-two percent of freshmen expect to earn a master's degree.";
-		questions[6] = "Less than 5% of American families have saved enough for college.";
-		questions[7] = "Lots of kids who don’t need financial aid get it.";
-		questions[8] = "53% of all international students in the US come from China, Canada, India, Taiwan, S. Korea and Japan.";
-		questions[9] = "A recent panel of Admissions Representatives said that the Early pool applicants are typically NOT stronger and more qualified.";
-		questions[10] = "Two thirds of all college students get some form of financial aid.";
-		questions[11] = "Us colleges do not require students to declare majors upon admission.";*/
+		
 	}
 		
 	return {
