@@ -69,11 +69,10 @@ p {
 	z-index: 3;	
 }
 
-#welcomeBtn {
+#welcomeBtnContainer {
 	padding-top: 20px;
 	text-align:center;	
 }
-
 
 .welcomeTitle {
 	padding-top: 70px;
@@ -92,7 +91,65 @@ p {
 	-webkit-user-select: none;
 }
 
+.questionTitle {
+	padding-top: 40px;
+	padding-left: 40px;
+	color: #4a4a4a;
+	font-size: 36px;
+	-webkit-user-select: none;
+}
 
+.questionSubtitle {
+	padding-top: 8px;
+	padding-left: 40px;
+	color: #4a4a4a;
+	font-size: 14px;
+	-webkit-user-select: none;
+}
+
+.questionNumber {
+	padding-top: 8px;
+	padding-left: 40px;
+	color: #4a4a4a;
+	font-size: 14px;
+	-webkit-user-select: none;
+}
+
+.question {
+	padding-top: 60px;
+	padding-left: 25px;
+	padding-right: 25px;
+	text-align:center;
+	color: #343535;
+	font-size: 22px;
+	-webkit-user-select: none;
+}
+
+#radioContainer {
+	padding-top: 50px;
+	padding-bottom: 40px;
+	width: 807px;
+	text-align:center;
+}
+
+.radiogroup {
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+}
+
+.radiogroup label {
+	padding-top: 5px;
+	display: block;
+	font-size: 18px;
+	color: #4a4a4a;
+	-webkit-user-select: none;
+}
+
+#factBtnContainer {
+	padding-top: 20px;
+	text-align:center;	
+}
 
 #copyright {
 	padding-top: 3px;
@@ -101,88 +158,4 @@ p {
 	color: #4a4a4a;
 	font-size: 0.7em;
 }
-
-#filterInput {
-	width: 300px;
-	height: 30px;
-	font-size: 18px;
-}
-
-#accordion {
-	margin-top: 40px;
-	font-size: 11pt;
-}
-
-#accordion h3 { 
-	font-size: 20px;
-	padding-top: 3px;
-	padding-left: 30px;
-}
-
-.tableOdd {
-	margin: 4px;
-	font-size: 11pt;
-	background-color: #E1EAED;
-	border: 10px solid white;
-}
-
-.tableEven {
-	margin: 4px;
-	font-size: 11pt;
-	background-color: #F2F2F2;
-	border: 5px solid white;
-}
-
-.infoMessage {
-	padding-top: 20px;
-	padding-left: 10px;
-	font-family:sans-serif;
-	font-size: 11px;
-	width: 700px;
-	height: 40px;
-	font-size: 18px;
-	color: #0175a4;
-}
-
-.errorMessage {
-	padding-top: 20px;
-	padding-left: 10px;
-	font-family:sans-serif;
-	font-size: 11px;
-	width: 700px;
-	height: 40px;
-	font-size: 18px;
-	color: #F78F4A;
-}
-
-.node {
-	cursor: pointer;
-}
-
-.nodeText {
-	font-family:sans-serif;
-	font-weight: bold;
-}
-
-.nodeLabel {
-	font-family:sans-serif;
-	font-weight: bold;
-}
-
-.link {
-	fill: none;
-	stroke: #ccc;
-	stroke-width: 1.5px;
-}
-
-.templink {
-	fill: none;
-	stroke: red;
-	stroke-width: 3px;
-}
-
-.highlightCircle{
-	fill: #D65A5A;
-}
-
 

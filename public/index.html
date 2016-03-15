@@ -12,49 +12,13 @@
 
 	<script type="text/javascript" src="js/ncsu/common/utils.js"></script>
 	<script type="text/javascript" src="js/ncsu/common/logger.js"></script>
+	<script type="text/javascript" src="js/ncsu/nas/main.js"></script>
 
-	<script type="text/javascript">
+	<script type="text/javascript">	
 		$(document).ready(function() {
-			logger.isDebug(true);			
-			logger.log( "let's build a website");
-						
-			$("#welcome").show();
-			$("#loader_facts").hide();
-			$("#loader_questions").hide();		
-		});
-		
-		function show_question() {
-			$("#loader_questions").hide();
-			
-			$("#welcome").css( "opacity", "0");
-			$("#welcome").show();
-			$("#welcome").animate( { opacity: '1' }, 2000 );	
-		}
-
-		function hide_loader() {	
-			$("#loader_questions").animate( { opacity: '0' }, 2000, show_question );	
-		}
-		
-		function show_loader() {			
-			$("#welcome").hide();			
-			
-			$("#loader_questions").css( "opacity", "0");
-			$("#loader_questions").show();				
-			$("#loader_questions").animate( { opacity: '1' }, 2000 );	
-			setTimeout( hide_loader, 4000 );				
-		}
-		
-		$(function() {
-			$( "input[type=submit], a, button" )
-			.button()
-			.click(function( event ) {
-				event.preventDefault();
-				
-				$("#welcome").animate( { opacity: '0' }, 2000, show_loader );		
-				
-			});
-		});
-		
+			logger.isDebug(true);
+			Main.init();	
+		});		
 	</script>
 	<title>Welcome | NAS Learning Solutions</title>	
 </head>
@@ -73,9 +37,29 @@
 				<div class="welcomeBody"><p>Thank you for coming here today. Today, you will be working with this computer. This computer is designed to help you learn information. The computer will begin by providing you with a fact. After reading the fact, you should use the mouse to indicate how familiar you are with that particular fact. The computer will then select the next fact, based on your level of familliarity with the previous fact. In other words, the more you know about the topic associated with a fact, the less likely you will be to receive additional facts on that topic. You will receive a total of 20 facts, chosen from a list of 1,000 possible facts.</p>
 				
 				<p>After completing the tutoring session, you will take a test. The test will involve 12 multiple-choice questions, randomly chosen from a set of 5,000 questions. The Computer will then evaluate your performance on the test, and evaluate its own performance as a tutor.</div>
-				<div id="welcomeBtn"><button>Begin</button></div>
+				<div id="welcomeBtnContainer"><button id="welcomeBtn">Begin</button></div>
 			</div>
-			
+			<div id="facts">
+				<div class="questionTitle">Part 1: Questionaire</div>
+				<div class="questionSubtitle">Rate your knowledge of the fact below.</div>
+				<div class="questionNumber" id="factNumber">Fact 2 of 20</div>
+				<div class="question" id="fact_text">76% of students get into their first choice college.</div>
+				<div id="radioContainer">
+					<div class="radiogroup">						
+						<input type="radio" name="radio" id="radio_id1" />
+						<label for="radio_id1">I know very little</label>
+					</div>
+					<div class="radiogroup">						
+						<input type="radio" name="radio" id="radio_id2" />
+						<label for="radio_id2">I know some</label>
+					</div>
+					<div class="radiogroup">						
+						<input type="radio" name="radio" id="radio_id3" />
+						<label for="radio_id3">I know a great deal</label>
+					</div>
+				</div>
+				<div id="factBtnContainer"><button id="factBtn">Submit</button></div>
+			</div>
 			
 		</div>
 		<div id="copyright">© copyright NAS Learning Solutions 2016</div>
