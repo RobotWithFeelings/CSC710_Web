@@ -115,11 +115,21 @@ p {
 	-webkit-user-select: none;
 }
 
-.question {
+.fact {
 	padding-top: 60px;
 	padding-left: 25px;
 	padding-right: 25px;
 	text-align:center;
+	color: #343535;
+	font-size: 22px;
+	-webkit-user-select: none;
+}
+
+.question {
+	padding-top: 30px;
+	padding-left: 70px;
+	padding-right: 25px;
+	text-align:left;
 	color: #343535;
 	font-size: 22px;
 	-webkit-user-select: none;
@@ -146,8 +156,33 @@ p {
 	-webkit-user-select: none;
 }
 
+#radioContainer2 {
+	padding-top: 25px;
+	padding-bottom: 0px;
+	padding-left: 90px;
+	width: 717px;
+	text-align:left;
+}
+
+.radiogroup2 {
+	padding: 10px;
+	text-align: left;
+}
+
+.radiogroup2 label {
+	padding-top: 5px;
+	font-size: 18px;
+	color: #4a4a4a;
+	-webkit-user-select: none;
+}
+
 #factBtnContainer {
 	padding-top: 20px;
+	text-align:center;	
+}
+
+#questionBtnContainer {
+	margin-top: -10px;
 	text-align:center;	
 }
 

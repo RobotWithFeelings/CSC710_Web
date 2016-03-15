@@ -25,12 +25,17 @@ var Main = (function() {
 		$("#questionBtn").button();
 		$("#questionBtn").click(onQuestionHandler);
 		
+		$("#transitionScoringBtn").button();
+		$("#transitionScoringBtn").click(onTransitionScoringHandler);
+		
 		$("#welcome").show();
 		$("#loader_facts").hide();
 		$("#loader_questions").hide();		
 		$("#facts").hide();	
 		$("#transition").hide();	
 		$("#questions").hide();
+		$("#transition_scoring").hide();
+		
 	}
 	
 	function onFactHandler() {
@@ -123,7 +128,7 @@ var Main = (function() {
 	}
 
 	function onQuestionHandler() {
-		if( $('input[name=radio]').is(":checked") ) {		
+		if( $('input[name=question_radio]').is(":checked") ) {		
 			current_question++;
 			
 			// end of questions, show eval form
@@ -132,12 +137,12 @@ var Main = (function() {
 				{
 					$('input[name=radio]').prop ('checked', false);
 					$("#questions").hide();
-					// show eval form here
+					showTransitionScoring();
 				} );				
 			}else {
 				$("#questions").animate( { opacity: '0' }, ( transition_time / 2 ), function()
 				{
-					$('input[name=radio]').prop ('checked', false);
+					$('input[name=question_radio]').prop ('checked', false);
 					$("#questions").hide();
 					showQuestionLoader();
 				} );
@@ -151,11 +156,35 @@ var Main = (function() {
 		$("#question_text").html( questions[current_question].text );
 		
 		// fill in question text
+		$("label[for=radio_question_id1]").html( questions[current_question].answer_0 );
+		$("label[for=radio_question_id2]").html( questions[current_question].answer_1 );
+		$("label[for=radio_question_id3]").html( questions[current_question].answer_2 );
+		$("label[for=radio_question_id4]").html( questions[current_question].answer_3 );
+		$("label[for=radio_question_id5]").html( questions[current_question].answer_4 );
 		
 		$("#questions").css( "opacity", "0");
 		$("#questions").show();
 		$("#questions").animate( { opacity: '1' }, transition_time );			
 	}	
+	
+	function showTransitionScoring() {		
+		$("#transition_scoring").css( "opacity", "0");
+		$("#transition_scoring").show();
+		$("#transition_scoring").animate( { opacity: '1' }, transition_time );		
+	}
+	
+	function onTransitionScoringHandler() {
+		$("#transition_scoring").animate( { opacity: '0' }, ( transition_time / 2 ), function()
+		{
+			$("#transition_scoring").hide();
+			// so evluation
+		} );
+	}
+	
+	
+	
+	
+	//----------------------
 	
 	function init_facts() {
 		facts[0] = "76% of students get into their first choice college.";
@@ -182,11 +211,11 @@ var Main = (function() {
 		
 	function init_questions() {
 		questions[0] = { "text" : "Which state most international students apply to for college?", "answer_0" : "Texas", "answer_1" : "Maine", "answer_2" : "Illinois", "answer_3" : "California", "answer_4" : "New York" };
-		questions[1] = { "text" : "What percentage of the school's financial aid fund goes to affluent students?", "answer_0" : "10%", "answer_1" : "20%", "answer_2" : "30%", "answer_3" : "40%", "answer_4" : "50%" };
+		/*questions[1] = { "text" : "What percentage of the school's financial aid fund goes to affluent students?", "answer_0" : "10%", "answer_1" : "20%", "answer_2" : "30%", "answer_3" : "40%", "answer_4" : "50%" };
 		questions[2] = { "text" : "What percentage of entering class is international?", "answer_0" : "5%", "answer_1" : "10%", "answer_2" : "15%", "answer_3" : "20%", "answer_4" : "25%" };
 		questions[3] = { "text" : "Most students attend college no more than how many away from their home town?", "answer_0" : "100 miles", "answer_1" : "500 miles", "answer_2" : "1,000 miles", "answer_3" : "1,500 miles", "answer_4" : "2,000 miles" };
 		questions[4] = { "text" : "How many hours a week do high school students spend studying?", "answer_0" : "1 hour", "answer_1" : "3 hours", "answer_2" : "6 hours", "answer_3" : "12 hours", "answer_4" : "18 hours" };
-		questions[5] = { "text" : "What fraction of students report that they felt overwhelmed at college?", "answer_0" : "A quarter", "answer_1" : "A third", "answer_2" : "Half", "answer_3" : "Two thirds", "answer_4" : "Three quarters" };
+		questions[5] = { "text" : "What fraction of students report that they felt overwhelmed at college?", "answer_0" : "A quarter", "answer_1" : "A third", "answer_2" : "Half", "answer_3" : "Two thirds", "answer_4" : "Three quarters" };*/
 		
 		
 	}
