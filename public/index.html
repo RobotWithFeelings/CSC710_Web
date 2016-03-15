@@ -17,20 +17,40 @@
 		$(document).ready(function() {
 			logger.isDebug(true);			
 			logger.log( "let's build a website");
-			
+						
 			$("#welcome").show();
 			$("#loader_facts").hide();
 			$("#loader_questions").hide();		
 		});
+		
+		function show_question() {
+			$("#loader_questions").hide();
+			
+			$("#welcome").css( "opacity", "0");
+			$("#welcome").show();
+			$("#welcome").animate( { opacity: '1' }, 2000 );	
+		}
 
+		function hide_loader() {	
+			$("#loader_questions").animate( { opacity: '0' }, 2000, show_question );	
+		}
+		
+		function show_loader() {			
+			$("#welcome").hide();			
+			
+			$("#loader_questions").css( "opacity", "0");
+			$("#loader_questions").show();				
+			$("#loader_questions").animate( { opacity: '1' }, 2000 );	
+			setTimeout( hide_loader, 4000 );				
+		}
+		
 		$(function() {
 			$( "input[type=submit], a, button" )
 			.button()
 			.click(function( event ) {
 				event.preventDefault();
 				
-				$("#welcome").hide();
-				$("#loader_questions").show();				
+				$("#welcome").animate( { opacity: '0' }, 2000, show_loader );		
 				
 			});
 		});

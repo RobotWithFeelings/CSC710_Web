@@ -79,7 +79,8 @@ p {
 	padding-top: 70px;
 	padding-left: 40px;
 	color: #4a4a4a;
-	font-size: 48px;	
+	font-size: 48px;
+	-webkit-user-select: none;
 }
 
 .welcomeBody {
@@ -87,7 +88,8 @@ p {
 	padding-left: 40px;
 	padding-right: 15px;
 	color: #4a4a4a;
-	font-size: 18px;	
+	font-size: 18px;
+	-webkit-user-select: none;
 }
 
 
