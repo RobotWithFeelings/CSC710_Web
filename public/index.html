@@ -34,9 +34,9 @@
 			</div>
 			<div id="welcome">
 				<div class="welcomeTitle">Welcome.</div>
-				<div class="welcomeBody"><p>Thank you for coming here today. Today, you will be working with this computer. This computer is designed to help you learn information. The computer will begin by providing you with a fact. After reading the fact, you should use the mouse to indicate how familiar you are with that particular fact. The computer will then select the next fact, based on your level of familliarity with the previous fact. In other words, the more you know about the topic associated with a fact, the less likely you will be to receive additional facts on that topic. You will receive a total of 20 facts, chosen from a list of 1,000 possible facts.</p>
+				<div class="welcomeBody"><p>Thank you for coming here today. Today, you will be working with this computer. This computer is designed to help you learn information. The computer will begin by providing you with a fact. After reading the fact, you should use the mouse to indicate how familiar you are with that particular fact. The computer will then select the next fact, based on your level of familliarity with the previous fact. In other words, the more you know about the topic associated with a fact, the less likely you will be to receive additional facts on that topic.</p>
 				
-				<p>After completing the tutoring session, you will take a test. The test will involve 12 multiple-choice questions, randomly chosen from a set of 5,000 questions. The Computer will then evaluate your performance on the test, and evaluate its own performance as a tutor.</div>
+				<p> You will receive a total of 20 facts, chosen from a list of 1,000 possible facts. After completing the tutoring session, you will take a test. The test will involve 12 multiple-choice questions, randomly chosen from a set of 5,000 questions. The Computer will then evaluate your performance on the test, and evaluate its own performance as a tutor.</div>
 				<div id="welcomeBtnContainer"><button id="welcomeBtn">Begin</button></div>
 			</div>
 			<div id="facts">
@@ -113,19 +113,38 @@
 				<div id="review_question">
 					<div class="questionReview" id="questionNumberA">Question 1:</div> 
 					<div class="questionReview" id="questionA">The actual question</div>
-					<div id="questionReviewA">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+					<div class="questionReviewFeedback" id="questionReviewA">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
 				</div>
 				
 				<div id="review_question">
 					<div class="questionReview" id="questionNumberB">Question 2:</div> 
 					<div class="questionReview" id="questionB" >The actual question</div>
-					<div id="questionReviewB">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+					<div class="questionReviewFeedback" id="questionReviewB">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
 				</div>				
 				
 				<div id="welcomeBtnContainer"><button id="reviewBtn">Continue</button></div>
 			</div>
-			
-			
+			<div id="transition_interview">
+				<div class="welcomeTitle">Tell us how we did.</div>
+				<div class="welcomeBody"><p>Now you can tell us how we did. Please complete the following interview about your experience. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</div>
+				<div id="welcomeBtnContainer"><button id="transitionInterviewBtn">Ok, let's start</button></div>
+			</div>
+			<div id="interview">
+				<div class="questionTitle">Part 4: Interview</div>
+				<div class="questionSubtitle">Tell us how we did by answering the interview questions below.</div>
+				<div class="questionNumber" id="interviewQuestionNumber">Question 1 of 12</div>
+				
+				<div id="review_question">
+					<div class="questionReview" id="interview_question">The question</div>					
+				</div>
+				
+				<div id="welcomeBtnContainer"><button id="interviewBtn">Continue</button></div>
+			</div>
+			<div id="complete">
+				<div class="welcomeTitle">Thank you!</div>
+				<div class="welcomeBody"><p>You are all done. Thank you for your participation. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</div>
+				<div id="welcomeBtnContainer"><button id="completeBtn">Reset</button></div>
+			</div>
 		</div>
 		<div id="copyright">© copyright NAS Learning Solutions 2016</div>
 	</div>

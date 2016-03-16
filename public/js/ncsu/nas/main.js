@@ -3,16 +3,20 @@ var Main = (function() {
 
 	var transition_time = 500;
 	var loader_time = 0;
+	var loader_rand = 250;
 	var current_fact = 0;
 	var current_question = 0;
-	var current_review_questions =0;
+	var current_review_question =0;
+	var current_interview_question = 0;
 	var facts = [];
 	var questions = [];
+	var interview_questions = [];
 	
 	function init(){		
 		logger.log( "main initializer");		
 		init_facts();
 		init_questions();
+		init_interview_questions();
 		
 		$("#welcomeBtn").button();
 		$("#welcomeBtn").click(onWelcomeHandler);	
@@ -32,6 +36,15 @@ var Main = (function() {
 		$("#reviewBtn").button();
 		$("#reviewBtn").click(onReviewHandler);
 		
+		$("#transitionInterviewBtn").button();
+		$("#transitionInterviewBtn").click(onTransitionInterviewHandler);
+		
+		$("#interviewBtn").button();
+		$("#interviewBtn").click(onInterviewHandler);
+		
+		$("#completeBtn").button();
+		$("#completeBtn").click(onResetHandler);
+		
 		$("#welcome").show();
 		$("#loader_facts").hide();
 		$("#loader_questions").hide();		
@@ -40,8 +53,16 @@ var Main = (function() {
 		$("#questions").hide();
 		$("#transition_scoring").hide();
 		$("#scoring").hide();
+		$("#transition_interview").hide();	
+		$("#interview").hide();	
+		$("#complete").hide();	
 		//showScoring();
-		
+	}
+	
+	function showWelcome(){
+		$("#welcome").css( "opacity", "0");
+		$("#welcome").show();
+		$("#welcome").animate( { opacity: '1' }, transition_time );		
 	}
 	
 	function onFactHandler() {
@@ -73,7 +94,7 @@ var Main = (function() {
 		$("#loader_facts").animate( { opacity: '1' }, transition_time );	
 		
 		// choose a random amount of time for the loader to remain visible
-		loader_time = 250 + ( Math.random() * 5000 );
+		loader_time = 250 + ( Math.random() * loader_rand );
 		logger.log( "loader time: " + loader_time );
 		
 		setTimeout( function() {
@@ -88,7 +109,7 @@ var Main = (function() {
 		$("#welcome").animate( { opacity: '0' }, ( transition_time / 2 ), function()
 		{
 			$("#welcome").hide();
-			showFactLoader();
+				showFactLoader();
 		} );
 	}	
 	
@@ -108,7 +129,7 @@ var Main = (function() {
 		$("#loader_questions").animate( { opacity: '1' }, transition_time );	
 		
 		// choose a random amount of time for the loader to remain visible
-		loader_time = 250 + ( Math.random() * 5000 );
+		loader_time = 250 + ( Math.random() * loader_rand );
 		logger.log( "loader time: " + loader_time );
 		
 		setTimeout( function() {
@@ -141,7 +162,7 @@ var Main = (function() {
 			if( current_question == questions.length ){
 				$("#questions").animate( { opacity: '0' }, ( transition_time / 2 ), function()
 				{
-					$('input[name=radio]').prop ('checked', false);
+					$('input[name=question_radio]').prop ('checked', false);
 					$("#questions").hide();
 					showTransitionScoring();
 				} );				
@@ -188,17 +209,25 @@ var Main = (function() {
 	}
 	
 	function showScoring() {			
-		var str = "Question " + ( current_review_questions + 1 ) + ":";
+		var str = "Question " + ( current_review_question + 1 ) + ":";
 		$("#questionNumberA").text( str );		
-		$("#questionA").html( questions[current_review_questions].text );
-		$("#questionReviewA").html( questions[current_review_questions].feedback  );		
-		current_review_questions++;
+		$("#questionA").html( questions[current_review_question].text );
+		$("#questionReviewA").html( questions[current_review_question].feedback  );		
+		$("#questionReviewA").removeClass( "questionReviewFeedbackCorrect" );
+		$("#questionReviewA").removeClass( "questionReviewFeedbackIncorrect" );
+		if( questions[current_review_question].icon == "1" ) $("#questionReviewA").addClass( "questionReviewFeedbackCorrect" );			
+		else $("#questionReviewA").addClass( "questionReviewFeedbackIncorrect" );
+		current_review_question++;
 		
-		str = "Question " + ( current_review_questions + 1 ) + ":";
+		str = "Question " + ( current_review_question + 1 ) + ":";
 		$("#questionNumberB").text( str );		
-		$("#questionB").html( questions[current_review_questions].text );
-		$("#questionReviewB").html( questions[current_review_questions].feedback );
-		current_review_questions++;
+		$("#questionB").html( questions[current_review_question].text );
+		$("#questionReviewB").html( questions[current_review_question].feedback );
+		$("#questionReviewB").removeClass( "questionReviewFeedbackCorrect" );
+		$("#questionReviewB").removeClass( "questionReviewFeedbackIncorrect" );
+		if( questions[current_review_question].icon == "1" ) $("#questionReviewB").addClass( "questionReviewFeedbackCorrect" );			
+		else $("#questionReviewB").addClass( "questionReviewFeedbackIncorrect" );
+		current_review_question++;
 		
 		$("#scoring").css( "opacity", "0");
 		$("#scoring").show();
@@ -206,24 +235,82 @@ var Main = (function() {
 	}	
 	
 	function onReviewHandler(){
-		// end of questions, show eval form
-		if( current_review_questions == questions.length ){
+		if( current_review_question == questions.length ){
 			$("#scoring").animate( { opacity: '0' }, ( transition_time / 2 ), function()
 			{
 				$("#scoring").hide();
-				// so interview questionnaire
+					showTransitionInterview();
 			} );				
 		}else {
 			showScoring();			
 		}		
 	}
 	
+	function showTransitionInterview() {		
+		$("#transition_interview").css( "opacity", "0");
+		$("#transition_interview").show();
+		$("#transition_interview").animate( { opacity: '1' }, transition_time );		
+	}
+	
+	function onTransitionInterviewHandler(){
+		$("#transition_interview").animate( { opacity: '0' }, ( transition_time / 2 ), function()
+		{
+			$("#transition_interview").hide();
+				showInterview();
+		} );
+	}
+	
+	function showInterview() {
+		var str = "Interview Question " + ( current_interview_question + 1 ) + " of " + interview_questions.length;
+		$("#interviewQuestionNumber").text( str );	
+	
+		$("#interview_question").html( interview_questions[current_interview_question].text );
+	
+		$("#interview").css( "opacity", "0");
+		$("#interview").show();
+		$("#interview").animate( { opacity: '1' }, transition_time );			
+	}	
+	
+	function onInterviewHandler() {
+		current_interview_question++;
+		
+		if( current_interview_question == interview_questions.length ){
+			$("#interview").animate( { opacity: '0' }, ( transition_time / 2 ), function()
+			{
+				$("#interview").hide();
+				// post data to backend
+				showComplete();
+			} );				
+		}else {
+			showInterview();			
+		}		
+	}
+	
+	function showComplete() {		
+		$("#complete").css( "opacity", "0");
+		$("#complete").show();
+		$("#complete").animate( { opacity: '1' }, transition_time );			
+	}
+	
+	function onResetHandler() {
+		current_fact = 0;
+		current_question = 0;
+		current_review_question = 0;
+		current_interview_question = 0;
+		
+		$("#complete").animate( { opacity: '0' }, ( transition_time / 2 ), function()
+			{
+				$("#complete").hide();
+					showWelcome();
+			} );		
+	}
+	
 	//----------------------
 	
 	function init_facts() {
 		facts[0] = "76% of students get into their first choice college.";
-		/*facts[1] = "75% of the colleges and universities in the U.S. are <br>East of the Mississippi River.";
-		facts[2] = "Being an athlete increases your chances of being accepted.";
+		facts[1] = "75% of the colleges and universities in the U.S. are <br>East of the Mississippi River.";
+		/*facts[2] = "Being an athlete increases your chances of being accepted.";
 		facts[3] = "In their senior year, 46.5 percent of the students frequently or occasionally fell asleep in class.";
 		facts[4] = "Tuition increases so that those who can pay full price subsidize the cost for those who cannot.";
 		facts[5] = "Forty-two percent of freshmen expect to earn a master's degree.";
@@ -244,13 +331,23 @@ var Main = (function() {
 	}
 		
 	function init_questions() {
-		questions[0] = { "text" : "Which state most international students apply to for college?", "answer_0" : "Texas", "answer_1" : "Maine", "answer_2" : "Illinois", "answer_3" : "California", "answer_4" : "New York", "feedback" : "Correct!" };
-		questions[1] = { "text" : "What percentage of the school's financial aid fund goes to affluent students?", "answer_0" : "10%", "answer_1" : "20%", "answer_2" : "30%", "answer_3" : "40%", "answer_4" : "50%", "feedback" : "Correct again!"  };
-		/*questions[2] = { "text" : "What percentage of entering class is international?", "answer_0" : "5%", "answer_1" : "10%", "answer_2" : "15%", "answer_3" : "20%", "answer_4" : "25%" };
-		questions[3] = { "text" : "Most students attend college no more than how many away from their home town?", "answer_0" : "100 miles", "answer_1" : "500 miles", "answer_2" : "1,000 miles", "answer_3" : "1,500 miles", "answer_4" : "2,000 miles" };
-		questions[4] = { "text" : "How many hours a week do high school students spend studying?", "answer_0" : "1 hour", "answer_1" : "3 hours", "answer_2" : "6 hours", "answer_3" : "12 hours", "answer_4" : "18 hours" };
-		questions[5] = { "text" : "What fraction of students report that they felt overwhelmed at college?", "answer_0" : "A quarter", "answer_1" : "A third", "answer_2" : "Half", "answer_3" : "Two thirds", "answer_4" : "Three quarters" };*/
-		
+		questions[0] = { "text" : "Which state most international students apply to for college?", "answer_0" : "Texas", "answer_1" : "Maine", "answer_2" : "Illinois", "answer_3" : "California", "answer_4" : "New York", "feedback" : "Feedback: correct!", "icon" : "1" };
+		questions[1] = { "text" : "What percentage of the school's financial aid fund goes to affluent students?", "answer_0" : "10%", "answer_1" : "20%", "answer_2" : "30%", "answer_3" : "40%", "answer_4" : "50%", "feedback" : "Feedback: correct again!", "icon" : "1"  };
+		questions[2] = { "text" : "What percentage of entering class is international?", "answer_0" : "5%", "answer_1" : "10%", "answer_2" : "15%", "answer_3" : "20%", "answer_4" : "25%", "feedback" : "Feedback: incorrect", "icon" : "0"  };
+		questions[3] = { "text" : "Most students attend college no more than how many away from their home town?", "answer_0" : "100 miles", "answer_1" : "500 miles", "answer_2" : "1,000 miles", "answer_3" : "1,500 miles", "answer_4" : "2,000 miles", "feedback" : "Feedback: correct!", "icon" : "1" };
+		/*questions[4] = { "text" : "How many hours a week do high school students spend studying?", "answer_0" : "1 hour", "answer_1" : "3 hours", "answer_2" : "6 hours", "answer_3" : "12 hours", "answer_4" : "18 hours", "feedback" : "Feedback: correct!" };
+		questions[5] = { "text" : "What fraction of students report that they felt overwhelmed at college?", "answer_0" : "A quarter", "answer_1" : "A third", "answer_2" : "Half", "answer_3" : "Two thirds", "answer_4" : "Three quarters", "feedback" : "Feedback: correct!" };
+		questions[6] = { "text" : "A quarter of college freshmen said they would need tutoring in which subject?", "answer_0" : "Biology", "answer_1" : "English", "answer_2" : "American History", "answer_3" : "Psychology", "answer_4" : "Math", "feedback" : "Feedback: correct!" };
+		questions[7] = { "text" : "What percentage of high school seniors did not read a book for fun?", "answer_0" : "30%", "answer_1" : "40%", "answer_2" : "50%", "answer_3" : "60%", "answer_4" : "70%", "feedback" : "Feedback: correct!" };
+		questions[8] = { "text" : "What percentage of students live on campus?", "answer_0" : "40%", "answer_1" : "50%", "answer_2" : "65%", "answer_3" : "75%", "answer_4" : "90%", "feedback" : "Feedback: correct!" };
+		questions[9] = { "text" : "What percentage of students rated themselves as being in the top 10 percent of students or above-average in their academic ability?", "answer_0" : "25%", "answer_1" : "50%", "answer_2" : "60%", "answer_3" : "70%", "answer_4" : "80%", "feedback" : "Feedback: correct!" };
+		questions[10] = { "text" : "How much of a concern is paying back student loans for a college freshman?", "answer_0" : "Not a concern", "answer_1" : "A minor concern", "answer_2" : "Somewhat a concern", "answer_3" : "A major concern", "answer_4" : "Undecided", "feedback" : "Feedback: correct!" };
+		questions[11] = { "text" : "How much money can a family make and still be considered for needs based financial aid?", "answer_0" : "50k", "answer_1" : "100k", "answer_2" : "125k", "answer_3" : "150k", "answer_4" : "200k", "feedback" : "Feedback: correct!" };	*/
+	}
+	
+	function init_interview_questions() {
+		interview_questions[0] = { "text" : "How well did the digital tutor perform in helping you?", "answer_0" : "Texas", "answer_1" : "Maine", "answer_2" : "Illinois", "answer_3" : "California", "answer_4" : "New York", "feedback" : "Feedback: correct!" };
+		interview_questions[1] = { "text" : "Did you like the computer?", "answer_0" : "10%", "answer_1" : "20%", "answer_2" : "30%", "answer_3" : "40%", "answer_4" : "50%", "feedback" : "Feedback: correct again!"  };
 		
 	}
 		

@@ -189,18 +189,56 @@ p {
 #review_score {
 	padding-top: 30px;
 	padding-left: 40px;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 	font-size: 18px;
 	color: #4a4a4a;
 	font-family:"arial";
+	-webkit-user-select: none;
 }
 
 #review_question {
 	padding-top: 20px;
 	padding-left: 40px;
+	padding-bottom: 5px;
 	font-size: 18px;
 	color: #4a4a4a;
 	font-family:"arial";
+	-webkit-user-select: none;
+}
+
+.questionReview {
+	padding-left: 0px;
+	padding-bottom: 10px;
+	font-size: 18px;
+	color: #4a4a4a;
+	font-family:"arial";
+	-webkit-user-select: none;
+}
+
+.questionReviewFeedbackCorrect {
+	padding-top: 10px;
+	padding-left: 90px;
+	padding-bottom: 10px;
+	font-size: 18px;
+	color: #4a4a4a;
+	font-family:"arial";
+	background-image: url("../images/checkmark.png");
+	background-repeat: no-repeat;
+	background-position: 40px 0px;
+	-webkit-user-select: none;
+}
+
+.questionReviewFeedbackIncorrect {
+	padding-top: 10px;
+	padding-left: 90px;
+	padding-bottom: 10px;
+	font-size: 18px;
+	color: #4a4a4a;
+	font-family:"arial";
+	background-image: url("../images/xcheckmark.png");
+	background-repeat: no-repeat;
+	background-position: 40px 0px;
+	-webkit-user-select: none;
 }
 
 #copyright {
