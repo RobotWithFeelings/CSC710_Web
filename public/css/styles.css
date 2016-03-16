@@ -55,6 +55,7 @@ p {
 	font-family: "arial";
 	font-size: 14px;
 	padding-top: 260px;
+	-webkit-user-select: none;
 }
 
 #welcome {
