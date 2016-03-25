@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm test",
     "build": "node server.js",
-    "prebuild": "sh ./env.sh > env.js"
+    "prebuild": "sh ./env.sh > ./public/env.js"
   },
   "repository": {
     "type": "git",
