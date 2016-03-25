@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "run": "node server.js",
-    "prerun": "sh ./env.sh > env.js"
+    "build": "node server.js",
+    "prebuild": "sh ./env.sh > env.js"
   },
   "repository": {
     "type": "git",
