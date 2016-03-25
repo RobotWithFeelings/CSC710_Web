@@ -53,37 +53,17 @@ var Main = (function() {
 		$("#questions").hide();
 		$("#transition_scoring").hide();
 		$("#scoring").hide();
-		$("#transition_interview").hide();	
+		$("#transition_interview").show();	
 		$("#interview").hide();	
 		$("#complete").hide();		
-		showInterview();
-		
-		var blob = {"survey": {
-			"ownMachine": 1,
-			"cs": 0,
-			"gender": "f",
-			"progExp": 0,
-			"age": 100,
-			"international": 0 }
-		}
-
-		/*$.ajax({ type: "POST", dataType: "json", async: true, username: "695ZFSBY8MXXR5VSZD0656O9P", password: "7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8",  url: "http://nassdb.herokuapp.com/api/v1/surveys/", data: blob, success: function( res ) {
-			logger.log( res );
-
-		}  })*/
-		
-		
-		$.ajax({ type: "POST", dataType: "json", async: true, beforeSend: function (xhr) {			
+		//showInterview();
+				
+		/*$.ajax({ type: "POST", dataType: "json", async: true, beforeSend: function (xhr) {			
 			xhr.setRequestHeader ("Authorization", "Basic " + btoa( "695ZFSBY8MXXR5VSZD0656O9P" + ":" + "7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8" ) );			
 		}, url: "http://nassdb.herokuapp.com/api/v1/surveys/", data: blob, success: function( res ) {
 			logger.log( res );
 
-		}  });
-		
-		
-		
-		
-		
+		}  });*/
 	}
 	
 	function showWelcome(){
@@ -309,15 +289,29 @@ var Main = (function() {
 	function onInterviewHandler() {
 		current_interview_question++;
 		
-		if( current_interview_question == interview_questions.length ){
+		if( current_interview_question == 1 ) {
+			// post answers to first batch of questions
+			$("#interview").animate( { opacity: '0' }, ( transition_time / 2 ), function()
+			{
+				$("#interview").hide();
+				
+				// post data to backend
+				var blob = {"survey": { "ownMachine": 1, "cs": 0, "gender": "f", "progExp": 0, "age": 100, "international": 0 } };
+				$.ajax({ type: "POST", dataType: "json", async: true, username: "695ZFSBY8MXXR5VSZD0656O9P", password: "7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8",  url: "http://nassdb.herokuapp.com/api/v1/surveys/", data: blob, success: function( res ) {
+					logger.log( res );
+				}  });
+				
+				// update UI				
+				//showInterview();	
+			} );
+		}else if( current_inteview_question == 2 ) {
+			// post answers to second batch of questions
 			$("#interview").animate( { opacity: '0' }, ( transition_time / 2 ), function()
 			{
 				$("#interview").hide();
 				// post data to backend
 				showComplete();
-			} );				
-		}else {
-			showInterview();			
+			} );
 		}		
 	}
 	
