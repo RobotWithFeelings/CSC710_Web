@@ -67,13 +67,18 @@ var Main = (function() {
 			"international": 0 }
 		}
 
-		$.ajax({ type: "POST", dataType: "json", async: true, username: env.API_USERNAME, password: env.API_PASSWORD,  url: "http://nassdb.herokuapp.com/api/v1/surveys/", data: blob, success: function( res ){
+		/*$.ajax({ type: "POST", dataType: "json", async: true, username: "695ZFSBY8MXXR5VSZD0656O9P", password: "7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8",  url: "http://nassdb.herokuapp.com/api/v1/surveys/", data: blob, success: function( res ) {
 			logger.log( res );
 
-		}  })
+		}  })*/
 		
 		
-		
+		$.ajax({ type: "POST", dataType: "json", async: true, beforeSend: function (xhr) {			
+			xhr.setRequestHeader ("Authorization", "Basic " + btoa( "695ZFSBY8MXXR5VSZD0656O9P" + ":" + "7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8" ) );			
+		}, url: "http://nassdb.herokuapp.com/api/v1/surveys/", data: blob, success: function( res ) {
+			logger.log( res );
+
+		}  });
 		
 		
 		
