@@ -192,13 +192,13 @@ p {
 	padding-top: 0px;
 	padding-bottom: 0px;
 	padding-left: 0px;
-	width: 717px;
+	width: 600px;
 	text-align:left;
 }
 
 .radiogroupBtn {
 	padding-left: 15px;
-	padding-bottom: 15px;
+	padding-bottom: 5px;
 	display: inline-block;
 }
 
@@ -242,8 +242,8 @@ input { vertical-align: middle; margin-top: 0px;}
 	-webkit-user-select: none;
 }
 
-#interview_question {
-	padding-top: 20px;
+.interview_question {
+	padding-top: 5px;
 	padding-left: 40px;
 	padding-bottom: 5px;
 	display: inline-block;
@@ -251,9 +251,22 @@ input { vertical-align: middle; margin-top: 0px;}
 	color: #4a4a4a;
 	font-family:"arial";
 	-webkit-user-select: none;
+	background-color: bisque;
 }
 
-.adjective {
+.interview_question2 {
+	padding-top: 5px;
+	padding-left: 40px;
+	padding-bottom: 5px;
+	display: inline-block;
+	font-size: 11px;
+	color: #4a4a4a;
+	font-family:"arial";
+	-webkit-user-select: none;
+	background-color: beige;
+}
+
+.adjective {	
 	font-size: 14px;
 	color: #4a4a4a;
 	font-family:"arial";
