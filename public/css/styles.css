@@ -242,6 +242,11 @@ input { vertical-align: middle; margin-top: 0px;}
 	-webkit-user-select: none;
 }
 
+.questionContainer {
+	
+	
+}
+
 .interview_question {
 	padding-top: 5px;
 	padding-left: 40px;
@@ -251,7 +256,7 @@ input { vertical-align: middle; margin-top: 0px;}
 	color: #4a4a4a;
 	font-family:"arial";
 	-webkit-user-select: none;
-	background-color: bisque;
+	background-color: #fff6ea;
 }
 
 .interview_question2 {
@@ -263,7 +268,7 @@ input { vertical-align: middle; margin-top: 0px;}
 	color: #4a4a4a;
 	font-family:"arial";
 	-webkit-user-select: none;
-	background-color: beige;
+	background-color: #fff0dd;
 }
 
 .adjective {	

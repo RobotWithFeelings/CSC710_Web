@@ -55,8 +55,30 @@ var Main = (function() {
 		$("#scoring").hide();
 		$("#transition_interview").hide();	
 		$("#interview").hide();	
-		$("#complete").hide();	
+		$("#complete").hide();		
 		showInterview();
+		
+		var blob = {"survey": {
+			"ownMachine": 1,
+			"cs": 0,
+			"gender": "f",
+			"progExp": 0,
+			"age": 100,
+			"international": 0 }
+		}
+
+		$.ajax({ type: "POST", dataType: "json", async: true, username: env.API_USERNAME, password: env.API_PASSWORD,  url: "http://nassdb.herokuapp.com/api/v1/surveys/", data: blob, success: function( res ){
+			logger.log( res );
+
+		}  })
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 	
 	function showWelcome(){
@@ -272,6 +294,7 @@ var Main = (function() {
 		$("#interview_adjective6").html( interview_questions[5].text );
 		$("#interview_adjective7").html( interview_questions[6].text );
 		$("#interview_adjective8").html( interview_questions[7].text );
+		$("#interview_adjective9").html( interview_questions[8].text );
 	
 		$("#interview").css( "opacity", "0");
 		$("#interview").show();
