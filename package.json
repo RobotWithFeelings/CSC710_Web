@@ -4,7 +4,8 @@
   "description": "Website for nass reqplication",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "run": "npm run"
   },
   "repository": {
     "type": "git",
