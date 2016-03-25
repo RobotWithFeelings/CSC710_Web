@@ -1,26 +1,4 @@
-var logger = (function() {
-	var debug = false;
-	
-	function isDebug(b) {
-		debug = b;
-	}
-	
-	function log(msg) {
-		if(debug) console.log(msg);
-	}	
-	
-	function warn(msg) {
-		if(debug) console.warn(msg);
-	}
-	
-	function error(msg) {
-		console.error(msg);
-	}
-	
-	return {
-		isDebug: isDebug,
-		log: log,
-		warn: warn,
-		error: error
-	};	
-})();
+env = {
+  API_PASSWORD: '7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8',
+  API_USERNAME: '695ZFSBY8MXXR5VSZD0656O9P'
+}
