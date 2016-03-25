@@ -45,7 +45,7 @@ var Main = (function() {
 		$("#completeBtn").button();
 		$("#completeBtn").click(onResetHandler);
 		
-		$("#welcome").show();
+		$("#welcome").hide();
 		$("#loader_facts").hide();
 		$("#loader_questions").hide();		
 		$("#facts").hide();	
@@ -56,7 +56,7 @@ var Main = (function() {
 		$("#transition_interview").hide();	
 		$("#interview").hide();	
 		$("#complete").hide();	
-		//showScoring();
+		showInterview();
 	}
 	
 	function showWelcome(){
@@ -261,10 +261,17 @@ var Main = (function() {
 	}
 	
 	function showInterview() {
-		var str = "Interview Question " + ( current_interview_question + 1 ) + " of " + interview_questions.length;
-		$("#interviewQuestionNumber").text( str );	
+		//var str = "Interview Question " + ( current_interview_question + 1 ) + " of " + interview_questions.length;
+		//$("#interviewQuestionNumber").text( str );	
 	
-		$("#interview_question").html( interview_questions[current_interview_question].text );
+		$("#interview_adjective1").html( interview_questions[0].text );
+		$("#interview_adjective2").html( interview_questions[1].text );
+		$("#interview_adjective3").html( interview_questions[2].text );
+		$("#interview_adjective4").html( interview_questions[3].text );
+		$("#interview_adjective5").html( interview_questions[4].text );
+		$("#interview_adjective6").html( interview_questions[5].text );
+		$("#interview_adjective7").html( interview_questions[6].text );
+		$("#interview_adjective8").html( interview_questions[7].text );
 	
 		$("#interview").css( "opacity", "0");
 		$("#interview").show();
@@ -346,9 +353,15 @@ var Main = (function() {
 	}
 	
 	function init_interview_questions() {
-		interview_questions[0] = { "text" : "How well did the digital tutor perform in helping you?", "answer_0" : "Texas", "answer_1" : "Maine", "answer_2" : "Illinois", "answer_3" : "California", "answer_4" : "New York", "feedback" : "Feedback: correct!" };
-		interview_questions[1] = { "text" : "Did you like the computer?", "answer_0" : "10%", "answer_1" : "20%", "answer_2" : "30%", "answer_3" : "40%", "answer_4" : "50%", "feedback" : "Feedback: correct again!"  };
-		
+		interview_questions[0] = { "text" : "Accurate" };
+		interview_questions[1] = { "text" : "Analytical" };
+		interview_questions[2] = { "text" : "Competent" };
+		interview_questions[3] = { "text" : "Fair" };
+		interview_questions[4] = { "text" : "Friendly" };
+		interview_questions[5] = { "text" : "Fun" };
+		interview_questions[6] = { "text" : "Likable" };
+		interview_questions[7] = { "text" : "Polite" };
+		interview_questions[8] = { "text" : "Warm" };		
 	}
 		
 	return {

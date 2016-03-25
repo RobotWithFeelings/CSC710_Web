@@ -108,6 +108,15 @@ p {
 	-webkit-user-select: none;
 }
 
+.questionSubtitle2 {
+	padding-top: 8px;
+	padding-left: 40px;
+	padding-bottom: 10px;
+	color: #4a4a4a;
+	font-size: 14px;
+	-webkit-user-select: none;
+}
+
 .questionNumber {
 	padding-top: 8px;
 	padding-left: 40px;
@@ -177,6 +186,32 @@ p {
 	-webkit-user-select: none;
 }
 
+#radioContainer3 {
+	position: relative;
+	margin-left: 100px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	width: 717px;
+	text-align:left;
+}
+
+.radiogroupBtn {
+	padding-left: 15px;
+	padding-bottom: 15px;
+	display: inline-block;
+}
+
+.radiogroupBtn label {
+	padding-left: 4px;
+	padding-right: 10px;
+	font-size: 10px;
+	color: #4a4a4a;	
+	-webkit-user-select: none;
+}
+
+input { vertical-align: middle; margin-top: 0px;}
+
 #factBtnContainer {
 	padding-top: 20px;
 	text-align:center;	
@@ -204,6 +239,26 @@ p {
 	font-size: 18px;
 	color: #4a4a4a;
 	font-family:"arial";
+	-webkit-user-select: none;
+}
+
+#interview_question {
+	padding-top: 20px;
+	padding-left: 40px;
+	padding-bottom: 5px;
+	display: inline-block;
+	font-size: 11px;
+	color: #4a4a4a;
+	font-family:"arial";
+	-webkit-user-select: none;
+}
+
+.adjective {
+	font-size: 14px;
+	color: #4a4a4a;
+	font-family:"arial";
+	display: inline-block;
+	float: left;
 	-webkit-user-select: none;
 }
 
