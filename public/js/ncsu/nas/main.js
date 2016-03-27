@@ -341,6 +341,7 @@ var Main = (function() {
 						"age": 100, 
 						"international": 0 
 					}, 
+					dataType: 'json',
 					success: function( res ) {
 						logger.log( res );
 					},
