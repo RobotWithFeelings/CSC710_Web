@@ -340,10 +340,10 @@ var Main = (function() {
 					async: true, 
 					data: JSON.stringify(blob), 
 					success: function( res ) {
-						console.log( res );
+						logger.log( res );
 					},
 					error: function( err ){
-						console.log( err );
+						logger.log( err );
 					}  
 				});
 				
