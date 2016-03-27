@@ -333,7 +333,14 @@ var Main = (function() {
 					url: "http://nassdb.herokuapp.com/api/v1/surveys/",
 					type: "POST",
 					async: true, 
-					data: JSON.stringify(blob), 
+					data: { 
+						"ownMachine": 1, 
+						"cs": 0, 
+						"gender": "f", 
+						"progExp": 0, 
+						"age": 100, 
+						"international": 0 
+					}, 
 					success: function( res ) {
 						logger.log( res );
 					},
