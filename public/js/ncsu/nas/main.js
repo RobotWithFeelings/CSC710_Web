@@ -316,39 +316,62 @@ var Main = (function() {
 			{
 				$("#tutor_interview").hide();
 				
-				// post data to backend
-				var blob = { 
-					"ownMachine": 1, 
-					"cs": 0, 
-					"gender": "f", 
-					"progExp": 0, 
-					"age": 100, 
-					"international": 0 
-				};
+				// // post data to backend
+				// var blob = { 
+				// 	"ownMachine": 1, 
+				// 	"cs": 0, 
+				// 	"gender": "f", 
+				// 	"progExp": 0, 
+				// 	"age": 100, 
+				// 	"international": 0 
+				// };
 
-				$.ajax({ 
-					headers:{
-						"Authorization": "Basic " + btoa("695ZFSBY8MXXR5VSZD0656O9P" + ":" + "7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8")
-					},
-					url: "http://nassdb.herokuapp.com/api/v1/surveys/",
-					type: "POST",
-					async: true, 
-					data: { 
-						ownMachine: 1, 
-						cs: 0, 
-						gender: "f", 
-						progExp: 0, 
-						age: 100, 
-						international: 0 
-					}, 
-					dataType: 'json',
-					success: function( res ) {
-						logger.log( res );
-					},
-					error: function( err ){
-						logger.log( err );
-					}  
+				// $.ajax({ 
+				// 	headers:{
+				// 		"Authorization": "Basic " + btoa("695ZFSBY8MXXR5VSZD0656O9P" + ":" + "7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8")
+				// 	},
+				// 	url: "http://nassdb.herokuapp.com/api/v1/surveys/",
+				// 	type: "POST",
+				// 	async: true, 
+				// 	data: { 
+				// 		"ownMachine": 1, 
+				// 		"cs": 0, 
+				// 		"gender": "f", 
+				// 		"progExp": 0, 
+				// 		"age": 100, 
+				// 		"international": 0 
+				// 	}, 
+				// 	dataType: 'json',
+				// 	success: function( res ) {
+				// 		logger.log( res );
+				// 	},
+				// 	error: function( err ){
+				// 		logger.log( err );
+				// 	}  
+				// });
+
+
+
+				var settings = {
+				  "async": true,
+				  "crossDomain": true,
+				  "url": "http://nassdb.herokuapp.com/api/v1/surveys/",
+				  "method": "POST",
+				  "headers": {
+				    "content-type": "application/json",
+				    "authorization": "Basic Njk1WkZTQlk4TVhYUjVWU1pEMDY1Nk85UDo3eThlTUFwMXJHeno4M0gxMDBWQnI4T0c3SkRNNkNtcExKSEVyNlNQNlE4",
+				    "cache-control": "no-cache",
+				    "postman-token": "a368b2fa-7060-ba7d-6ea0-7c0e4073458b"
+				  },
+				  "processData": false,
+				  "data": "{\n  \"ownMachine\": 1,\n  \"cs\" : 0,\n  \"gender\": \"f\",\n  \"progExp\": 0,\n  \"age\": 100, \n  \"international\": 0,\n  \"q1\":5, \n  \"q2\":8, \n  \"q3\":4, \n  \"q4\":9, \n  \"q5\":1\n}"
+				}
+
+				$.ajax(settings).done(function (response) {
+  					console.log(response);
 				});
+
+
 				
 				// update UI				
 				for( var i = 0; i < 9; i++ ) {
