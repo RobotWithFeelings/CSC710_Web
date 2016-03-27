@@ -332,7 +332,7 @@ var Main = (function() {
 						"Authorization": "Basic " + btoa("695ZFSBY8MXXR5VSZD0656O9P" + ":" + "7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8")
 					},
 					url: "http://nassdb.herokuapp.com/api/v1/surveys/",
-					method: "POST",
+					type: "POST",
 					crossDomain: true,
 					async: true, 
 					data: { 
@@ -368,11 +368,6 @@ var Main = (function() {
 				//   "processData": false,
 				//   "data": "{\n  \"ownMachine\": 1,\n  \"cs\" : 0,\n  \"gender\": \"f\",\n  \"progExp\": 0,\n  \"age\": 100, \n  \"international\": 0,\n  \"q1\":5, \n  \"q2\":8, \n  \"q3\":4, \n  \"q4\":9, \n  \"q5\":1\n}"
 				// }
-
-				$.ajax(settings).done(function (response) {
-  					console.log(response);
-				});
-
 
 				
 				// update UI				
