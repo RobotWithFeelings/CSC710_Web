@@ -327,14 +327,6 @@ var Main = (function() {
 				};
 
 				$.ajax({ 
-					// xhrFields: {
-					// 	withCredentials: true
-					// },
-					// beforeSend: function (xhr) {
-    	// 				xhr.setRequestHeader ("Authorization", "Basic " + 
-    	// 					btoa("695ZFSBY8MXXR5VSZD0656O9P" + ":" + 
-    	// 						"7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8")); 
-					// },
 					headers:{
 						"Authorization", "Basic " + btoa("695ZFSBY8MXXR5VSZD0656O9P" + ":" + "7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8")); 
 					},
