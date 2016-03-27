@@ -327,13 +327,16 @@ var Main = (function() {
 				};
 
 				$.ajax({ 
-					xhrFields: {
-						withCredentials: true
-					},
-					beforeSend: function (xhr) {
-    					xhr.setRequestHeader ("Authorization", "Basic " + 
-    						btoa("695ZFSBY8MXXR5VSZD0656O9P" + ":" + 
-    							"7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8")); 
+					// xhrFields: {
+					// 	withCredentials: true
+					// },
+					// beforeSend: function (xhr) {
+    	// 				xhr.setRequestHeader ("Authorization", "Basic " + 
+    	// 					btoa("695ZFSBY8MXXR5VSZD0656O9P" + ":" + 
+    	// 						"7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8")); 
+					// },
+					headers:{
+						"Authorization", "Basic " + btoa("695ZFSBY8MXXR5VSZD0656O9P" + ":" + "7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8")); 
 					},
 					url: "http://nassdb.herokuapp.com/api/v1/surveys/",
 					type: "POST",
@@ -363,10 +366,10 @@ var Main = (function() {
 				$("#researcher_interview").hide();
 				
 				// post data to backend				
-				/*var blob = {"survey": { "ownMachine": 1, "cs": 0, "gender": "f", "progExp": 0, "age": 100, "international": 0 } };
+				var blob = {"survey": { "ownMachine": 1, "cs": 0, "gender": "f", "progExp": 0, "age": 100, "international": 0 } };
 				$.ajax({ type: "POST", dataType: "json", async: true, username: "695ZFSBY8MXXR5VSZD0656O9P", password: "7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8",  url: "http://nassdb.herokuapp.com/api/v1/surveys/", data: blob, success: function( res ) {
 					logger.log( res );
-				}  });*/				
+				}  });				
 				
 				showComplete();
 			} );
