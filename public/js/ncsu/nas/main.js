@@ -334,12 +334,12 @@ var Main = (function() {
 					type: "POST",
 					async: true, 
 					data: { 
-						"ownMachine": 1, 
-						"cs": 0, 
-						"gender": "f", 
-						"progExp": 0, 
-						"age": 100, 
-						"international": 0 
+						ownMachine: 1, 
+						cs: 0, 
+						gender: "f", 
+						progExp: 0, 
+						age: 100, 
+						international: 0 
 					}, 
 					dataType: 'json',
 					success: function( res ) {
