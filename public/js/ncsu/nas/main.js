@@ -328,7 +328,7 @@ var Main = (function() {
 
 				$.ajax({ 
 					headers:{
-						"Authorization": "Basic " + btoa("695ZFSBY8MXXR5VSZD0656O9P" + ":" + "7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8")); 
+						"Authorization": "Basic " + btoa("695ZFSBY8MXXR5VSZD0656O9P" + ":" + "7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8")
 					},
 					url: "http://nassdb.herokuapp.com/api/v1/surveys/",
 					type: "POST",
