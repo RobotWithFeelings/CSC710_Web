@@ -10,13 +10,15 @@ var Main = (function() {
 	var current_interview_question = 0;
 	var facts = [];
 	var questions = [];
-	var interview_questions = [];
+	var interview_tutor_questions = [];
+	var interview_researcher_questions = [];
 	
 	function init(){		
 		logger.log( "main initializer");		
 		init_facts();
 		init_questions();
-		init_interview_questions();
+		init_tutor_questions();
+		init_researcher_questions();
 		
 		$("#welcomeBtn").button();
 		$("#welcomeBtn").click(onWelcomeHandler);	
@@ -42,6 +44,9 @@ var Main = (function() {
 		$("#interviewBtn").button();
 		$("#interviewBtn").click(onInterviewHandler);
 		
+		$("#interviewBtn2").button();
+		$("#interviewBtn2").click(onInterviewHandler);
+		
 		$("#completeBtn").button();
 		$("#completeBtn").click(onResetHandler);
 		
@@ -53,17 +58,12 @@ var Main = (function() {
 		$("#questions").hide();
 		$("#transition_scoring").hide();
 		$("#scoring").hide();
-		$("#transition_interview").show();	
-		$("#interview").hide();	
+		$("#transition_interview").hide();	
+		$("#tutor_interview").hide();	
+		$("#researcher_interview").hide();	
 		$("#complete").hide();		
-		//showInterview();
-				
-		/*$.ajax({ type: "POST", dataType: "json", async: true, beforeSend: function (xhr) {			
-			xhr.setRequestHeader ("Authorization", "Basic " + btoa( "695ZFSBY8MXXR5VSZD0656O9P" + ":" + "7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8" ) );			
-		}, url: "http://nassdb.herokuapp.com/api/v1/surveys/", data: blob, success: function( res ) {
-			logger.log( res );
-
-		}  });*/
+		showTutorInterview();
+		//showResearcherInterview();
 	}
 	
 	function showWelcome(){
@@ -263,37 +263,58 @@ var Main = (function() {
 		$("#transition_interview").animate( { opacity: '0' }, ( transition_time / 2 ), function()
 		{
 			$("#transition_interview").hide();
-				showInterview();
+				showTutorInterview();
 		} );
 	}
 	
-	function showInterview() {
-		//var str = "Interview Question " + ( current_interview_question + 1 ) + " of " + interview_questions.length;
-		//$("#interviewQuestionNumber").text( str );	
+	function showTutorInterview() {
+		$("#interview_tutor_adjective1").html( interview_tutor_questions[0].text );
+		$("#interview_tutor_adjective2").html( interview_tutor_questions[1].text );
+		$("#interview_tutor_adjective3").html( interview_tutor_questions[2].text );
+		$("#interview_tutor_adjective4").html( interview_tutor_questions[3].text );
+		$("#interview_tutor_adjective5").html( interview_tutor_questions[4].text );
+		$("#interview_tutor_adjective6").html( interview_tutor_questions[5].text );
+		$("#interview_tutor_adjective7").html( interview_tutor_questions[6].text );
+		$("#interview_tutor_adjective8").html( interview_tutor_questions[7].text );
+		$("#interview_tutor_adjective9").html( interview_tutor_questions[8].text );
 	
-		$("#interview_adjective1").html( interview_questions[0].text );
-		$("#interview_adjective2").html( interview_questions[1].text );
-		$("#interview_adjective3").html( interview_questions[2].text );
-		$("#interview_adjective4").html( interview_questions[3].text );
-		$("#interview_adjective5").html( interview_questions[4].text );
-		$("#interview_adjective6").html( interview_questions[5].text );
-		$("#interview_adjective7").html( interview_questions[6].text );
-		$("#interview_adjective8").html( interview_questions[7].text );
-		$("#interview_adjective9").html( interview_questions[8].text );
+		$("#tutor_interview").css( "opacity", "0");
+		$("#tutor_interview").show();
+		$("#tutor_interview").animate( { opacity: '1' }, transition_time );			
+	}
+
+	function showResearcherInterview() {
+		$("#interview_researcher_adjective1").html( interview_researcher_questions[0].text );
+		$("#interview_researcher_adjective2").html( interview_researcher_questions[1].text );
+		$("#interview_researcher_adjective3").html( interview_researcher_questions[2].text );
+		$("#interview_researcher_adjective4").html( interview_researcher_questions[3].text );
+		$("#interview_researcher_adjective5").html( interview_researcher_questions[4].text );
+		$("#interview_researcher_adjective6").html( interview_researcher_questions[5].text );
+		$("#interview_researcher_adjective7").html( interview_researcher_questions[6].text );
+		$("#interview_researcher_adjective8").html( interview_researcher_questions[7].text );
+		$("#interview_researcher_adjective9").html( interview_researcher_questions[8].text );
 	
-		$("#interview").css( "opacity", "0");
-		$("#interview").show();
-		$("#interview").animate( { opacity: '1' }, transition_time );			
+		$("#researcher_interview").css( "opacity", "0");
+		$("#researcher_interview").show();
+		$("#researcher_interview").animate( { opacity: '1' }, transition_time );			
 	}	
 	
 	function onInterviewHandler() {
-		current_interview_question++;
 		
-		if( current_interview_question == 1 ) {
+		// check if each of the questions is answered
+		var answered = true;
+		for( var i = 0; i < 9; i++ ) {
+			var name = "input[name=group" + ( i + 1 ) + "]";
+			answered = ( answered && $( name ).is(":checked") );
+		}	
+		
+		if( answered && current_interview_question == 0 ) {
+			current_interview_question++;
+
 			// post answers to first batch of questions
-			$("#interview").animate( { opacity: '0' }, ( transition_time / 2 ), function()
+			$("#tutor_interview").animate( { opacity: '0' }, ( transition_time / 2 ), function()
 			{
-				$("#interview").hide();
+				$("#tutor_interview").hide();
 				
 				// post data to backend
 				var blob = { 
@@ -327,14 +348,26 @@ var Main = (function() {
 				});
 				
 				// update UI				
-				//showInterview();	
+				for( var i = 0; i < 9; i++ ) {
+					var name = "input[name=group" + ( i + 1 ) + "]";
+					$( name ).prop ('checked', false);				
+				}
+				showResearcherInterview();	
 			} );
-		}else if( current_inteview_question == 2 ) {
+		}else if( answered && current_interview_question == 1 ) {
+			current_interview_question++;
+			
 			// post answers to second batch of questions
-			$("#interview").animate( { opacity: '0' }, ( transition_time / 2 ), function()
+			$("#researcher_interview").animate( { opacity: '0' }, ( transition_time / 2 ), function()
 			{
-				$("#interview").hide();
-				// post data to backend
+				$("#researcher_interview").hide();
+				
+				// post data to backend				
+				/*var blob = {"survey": { "ownMachine": 1, "cs": 0, "gender": "f", "progExp": 0, "age": 100, "international": 0 } };
+				$.ajax({ type: "POST", dataType: "json", async: true, username: "695ZFSBY8MXXR5VSZD0656O9P", password: "7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8",  url: "http://nassdb.herokuapp.com/api/v1/surveys/", data: blob, success: function( res ) {
+					logger.log( res );
+				}  });*/				
+				
 				showComplete();
 			} );
 		}		
@@ -399,16 +432,28 @@ var Main = (function() {
 		questions[11] = { "text" : "How much money can a family make and still be considered for needs based financial aid?", "answer_0" : "50k", "answer_1" : "100k", "answer_2" : "125k", "answer_3" : "150k", "answer_4" : "200k", "feedback" : "Feedback: correct!" };	*/
 	}
 	
-	function init_interview_questions() {
-		interview_questions[0] = { "text" : "Accurate" };
-		interview_questions[1] = { "text" : "Analytical" };
-		interview_questions[2] = { "text" : "Competent" };
-		interview_questions[3] = { "text" : "Fair" };
-		interview_questions[4] = { "text" : "Friendly" };
-		interview_questions[5] = { "text" : "Fun" };
-		interview_questions[6] = { "text" : "Likable" };
-		interview_questions[7] = { "text" : "Polite" };
-		interview_questions[8] = { "text" : "Warm" };		
+	function init_tutor_questions() {
+		interview_tutor_questions[0] = { "text" : "Enjoyable" };
+		interview_tutor_questions[1] = { "text" : "Useful" };
+		interview_tutor_questions[2] = { "text" : "Informative" };
+		interview_tutor_questions[3] = { "text" : "Accurate" };
+		interview_tutor_questions[4] = { "text" : "Analytical" };
+		interview_tutor_questions[5] = { "text" : "Fun" };
+		interview_tutor_questions[6] = { "text" : "Fair" };
+		interview_tutor_questions[7] = { "text" : "Efficient" };
+		interview_tutor_questions[8] = { "text" : "Reliable" };		
+	}
+	
+	function init_researcher_questions() {
+		interview_researcher_questions[0] = { "text" : "Helpful" };
+		interview_researcher_questions[1] = { "text" : "Polite" };
+		interview_researcher_questions[2] = { "text" : "Friendly" };
+		interview_researcher_questions[3] = { "text" : "Knowledgable" };
+		interview_researcher_questions[4] = { "text" : "Competent" };
+		interview_researcher_questions[5] = { "text" : "Likeable" };
+		interview_researcher_questions[6] = { "text" : "Approachable" };
+		interview_researcher_questions[7] = { "text" : "Passionate" };
+		interview_researcher_questions[8] = { "text" : "Focused" };		
 	}
 		
 	return {
