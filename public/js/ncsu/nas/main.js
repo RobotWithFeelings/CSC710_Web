@@ -335,7 +335,7 @@ var Main = (function() {
 					type: "POST",
 					crossDomain: true,
 					async: true, 
-					data: JSON.Stringify(blob);
+					data: JSON.Stringify(blob),
 					dataType: 'json',
 					success: function( res ) {
 						logger.log( res );
