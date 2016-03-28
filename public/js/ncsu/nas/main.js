@@ -329,7 +329,7 @@ var Main = (function() {
 				$.ajax({ 
 					headers:{
 						"content-Type": "application/json",
-						"Authorization": "Basic " + btoa("695ZFSBY8MXXR5VSZD0656O9P" + ":" + "7y8eMAp1rGzz83H100VBr8OG7JDM6CmpLJHEr6SP6Q8")
+						"Authorization": "Basic " + btoa(env.API_USERNAME + ":" + env.API_PASSWORD)
 					},
 					url: "http://nassdb.herokuapp.com/api/v1/surveys/",
 					type: "POST",
@@ -344,25 +344,7 @@ var Main = (function() {
 						logger.log( err );
 					}  
 				});
-
-
-
-				// var settings = {
-				//   "async": true,
-				//   "crossDomain": true,
-				//   "url": "http://nassdb.herokuapp.com/api/v1/surveys/",
-				//   "method": "POST",
-				//   "headers": {
-				//     "content-type": "application/json",
-				//     "authorization": "Basic Njk1WkZTQlk4TVhYUjVWU1pEMDY1Nk85UDo3eThlTUFwMXJHeno4M0gxMDBWQnI4T0c3SkRNNkNtcExKSEVyNlNQNlE4",
-				//     "cache-control": "no-cache",
-				//     "postman-token": "a368b2fa-7060-ba7d-6ea0-7c0e4073458b"
-				//   },
-				//   "processData": false,
-				//   "data": "{\n  \"ownMachine\": 1,\n  \"cs\" : 0,\n  \"gender\": \"f\",\n  \"progExp\": 0,\n  \"age\": 100, \n  \"international\": 0,\n  \"q1\":5, \n  \"q2\":8, \n  \"q3\":4, \n  \"q4\":9, \n  \"q5\":1\n}"
-				// }
-
-				
+			
 				// update UI				
 				for( var i = 0; i < 9; i++ ) {
 					var name = "input[name=group" + ( i + 1 ) + "]";
