@@ -317,14 +317,14 @@ var Main = (function() {
 				$("#tutor_interview").hide();
 				
 				// // post data to backend
-				// var blob = { 
-				// 	"ownMachine": 1, 
-				// 	"cs": 0, 
-				// 	"gender": "f", 
-				// 	"progExp": 0, 
-				// 	"age": 100, 
-				// 	"international": 0 
-				// };
+				var blob = { 
+					"ownMachine": 1, 
+					"cs": 0, 
+					"gender": "f", 
+					"progExp": 0, 
+					"age": 100, 
+					"international": 0 
+				};
 
 				$.ajax({ 
 					headers:{
@@ -335,14 +335,7 @@ var Main = (function() {
 					type: "POST",
 					crossDomain: true,
 					async: true, 
-					data: { 
-						ownMachine: 1, 
-						cs: 0, 
-						gender: "f", 
-						progExp: 0, 
-						age: 100, 
-						international: 0 
-					}, 
+					data: JSON.Stringify(blob);
 					dataType: 'json',
 					success: function( res ) {
 						logger.log( res );
