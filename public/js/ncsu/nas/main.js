@@ -177,6 +177,7 @@ var Main = (function() {
 						} );
 						
 						logger.log( res );						
+						logger.log( res[0].name );						
 						user_id = res[0].name;
 						$("#userid").html( "User Identifier: " + user_id );
 						$("#userid").show();			
