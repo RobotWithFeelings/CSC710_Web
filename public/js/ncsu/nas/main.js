@@ -174,6 +174,7 @@ var Main = (function() {
 					success: function( res ) {
 						logger.log( res );		
 						logger.log( res[0] );						
+						logger.log( res.survey );						
 						if( res[0] != undefined ) {
 							//logger.log( res[0].name );												
 							user_id = res[0].name;
