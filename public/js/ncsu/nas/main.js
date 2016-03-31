@@ -172,14 +172,8 @@ var Main = (function() {
 					data: JSON.stringify( blob ),
 					dataType: 'json',
 					success: function( res ) {
-						//logger.log( res );						
-						//logger.log( res[0].name );
-						//logger.log( res.survey.name );
-						
-						var d = $.parseJSON( res );
-						logger.log( d.name);
-						logger.log( d[0].name );						
-												
+						logger.log( res );						
+						logger.log( res[0].name );												
 						user_id = res[0].name;
 						$("#userid").html( "User Identifier: " + user_id );
 						$("#userid").show();	
@@ -189,7 +183,8 @@ var Main = (function() {
 							showFactLoader();
 						} );						
 					},
-					error: function( err ){
+					error: function( err ) {
+						logger.log( "here!");
 						logger.log( err );
 					}  
 				});										
