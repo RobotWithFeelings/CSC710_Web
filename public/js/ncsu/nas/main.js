@@ -172,13 +172,10 @@ var Main = (function() {
 					data: JSON.stringify( blob ),
 					dataType: 'json',
 					success: function( res ) {
-						logger.log( res );		
-						logger.log( res[0] );						
-						logger.log( res.survey );						
-						logger.log( res.survey.name );						
-						if( res[0] != undefined ) {
-							//logger.log( res[0].name );												
-							user_id = res[0].name;
+						logger.log( res );																			
+						if( res.survey != undefined ) {
+							//logger.log( res.survey.name );
+							user_id = res.survey.name;
 							$("#userid").html( "User Identifier: " + user_id );
 							$("#userid").show();	
 						}
