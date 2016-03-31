@@ -172,17 +172,16 @@ var Main = (function() {
 					data: JSON.stringify( blob ),
 					dataType: 'json',
 					success: function( res ) {
-						$("#loader_generic").animate( { opacity: '0' }, ( transition_time / 2 ), function() {
-							$("#loader_generic").hide();
-						} );
-						
 						logger.log( res );						
 						logger.log( res[0].name );						
 						user_id = res[0].name;
 						$("#userid").html( "User Identifier: " + user_id );
-						$("#userid").show();			
+						$("#userid").show();	
 						
-						showFactLoader();
+						$("#loader_generic").animate( { opacity: '0' }, ( transition_time / 2 ), function() {
+							$("#loader_generic").hide();
+							showFactLoader();
+						} );						
 					},
 					error: function( err ){
 						logger.log( err );
