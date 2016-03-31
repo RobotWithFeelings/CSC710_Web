@@ -173,7 +173,13 @@ var Main = (function() {
 					dataType: 'json',
 					success: function( res ) {
 						logger.log( res );						
-						logger.log( res[0].name );						
+						logger.log( res[0].name );
+						logger.log( res.survey.name );
+						
+						var d = $.parseJSON( res );
+						logger.log( d.name ;)
+						logger.log( d[0].name );						
+												
 						user_id = res[0].name;
 						$("#userid").html( "User Identifier: " + user_id );
 						$("#userid").show();	
