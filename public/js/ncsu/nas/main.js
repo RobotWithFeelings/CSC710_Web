@@ -69,6 +69,7 @@ var Main = (function() {
 		$("#welcome").hide();
 		$("#recovery").hide();
 		$("#demographics").hide();
+		$("#loader_generic").hide();
 		$("#loader_facts").hide();
 		$("#loader_questions").hide();		
 		$("#facts").hide();	
@@ -127,6 +128,10 @@ var Main = (function() {
 			{
 				$("#demographics").hide();
 				
+				$("#loader_generic").css( "opacity", "0");
+				$("#loader_generic").show();
+				$("#loader_generic").animate( { opacity: '1' }, transition_time );	
+				
 				var gender;
 				var isCS;
 				var international;
@@ -167,9 +172,12 @@ var Main = (function() {
 					data: JSON.stringify( blob ),
 					dataType: 'json',
 					success: function( res ) {
-						logger.log( res );
+						$("#loader_generic").animate( { opacity: '0' }, ( transition_time / 2 ), function() {
+							$("#loader_generic").hide();
+						} );
 						
-						user_id = res.name;
+						logger.log( res );						
+						user_id = res.survey.name;
 						$("#userid").html( "User Identifier: " + user_id );
 						$("#userid").show();			
 						
