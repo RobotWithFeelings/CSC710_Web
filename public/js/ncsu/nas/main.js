@@ -172,9 +172,9 @@ var Main = (function() {
 					data: JSON.stringify( blob ),
 					dataType: 'json',
 					success: function( res ) {
-						logger.log( res );						
-						logger.log( res[0].name );
-						logger.log( res.survey.name );
+						//logger.log( res );						
+						//logger.log( res[0].name );
+						//logger.log( res.survey.name );
 						
 						var d = $.parseJSON( res );
 						logger.log( d.name);
