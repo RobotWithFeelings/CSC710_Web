@@ -177,7 +177,7 @@ var Main = (function() {
 						logger.log( res.survey.name );
 						
 						var d = $.parseJSON( res );
-						logger.log( d.name ;)
+						logger.log( d.name);
 						logger.log( d[0].name );						
 												
 						user_id = res[0].name;
