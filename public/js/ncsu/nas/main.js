@@ -177,7 +177,7 @@ var Main = (function() {
 						} );
 						
 						logger.log( res );						
-						user_id = res.survey.name;
+						user_id = res[0].name;
 						$("#userid").html( "User Identifier: " + user_id );
 						$("#userid").show();			
 						
