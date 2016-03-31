@@ -22,7 +22,10 @@ var Main = (function() {
 		
 		$("#welcomeBtn").button();
 		$("#welcomeBtn").click(onWelcomeHandler);	
-								
+		
+		$("#demographicsBtn").button();
+		$("#demographicsBtn").click(onDemographicsHandler);	
+		
 		$("#factBtn").button();
 		$("#factBtn").click(onFactHandler);
 		
@@ -50,7 +53,8 @@ var Main = (function() {
 		$("#completeBtn").button();
 		$("#completeBtn").click(onResetHandler);
 		
-		$("#welcome").hide();
+		$("#welcome").show();
+		$("#demographics").hide();
 		$("#loader_facts").hide();
 		$("#loader_questions").hide();		
 		$("#facts").hide();	
@@ -61,15 +65,96 @@ var Main = (function() {
 		$("#transition_interview").hide();	
 		$("#tutor_interview").hide();	
 		$("#researcher_interview").hide();	
-		$("#complete").hide();		
-		showTutorInterview();
-		//showResearcherInterview();
+		$("#complete").hide();
 	}
 	
-	function showWelcome(){
+	function showWelcome() {
 		$("#welcome").css( "opacity", "0");
 		$("#welcome").show();
 		$("#welcome").animate( { opacity: '1' }, transition_time );		
+	}
+	
+	function onWelcomeHandler() {
+		$("#welcome").animate( { opacity: '0' }, ( transition_time / 2 ), function()
+		{
+			$("#welcome").hide();
+				showDemographics();
+		} );
+	}	
+	
+	function showDemographics() {
+		$("#demographics").css( "opacity", "0");
+		$("#demographics").show();
+		$("#demographics").animate( { opacity: '1' }, transition_time );			
+	}
+	
+	function onDemographicsHandler() {		
+		var age;
+		var experience;
+		var checked = $('input[name=demo_group1]').is(":checked") && $('input[name=demo_group2]').is(":checked") && $('input[name=demo_group3]').is(":checked") && $('input[name=demo_group4]').is(":checked");		
+		
+		age = $('input[id=demo_text_age]').val();
+		experience = $('input[id=demo_text_experience]').val();
+		
+		if( ( age == "" ) || ( experience == "" )  ) return;		
+		if( age < 0 || age > 100 ) return;
+		if( experience < 0 || experience > 100 ) return;
+		
+		if( checked ) {
+			$("#demographics").animate( { opacity: '0' }, ( transition_time / 2 ), function()
+			{
+				$("#demographics").hide();
+				
+				var gender;
+				var isCS;
+				var international;
+				var ownMachine;
+				
+				if( $('input[id=radio_gender_male]').is(":checked") ) gender = "m";
+				else if ( $('input[id=radio_gender_female]').is(":checked") )  gender = "f";
+
+				if( $('input[id=radio_cs_yes]').is(":checked") ) isCS = 1;
+				else if ( $('input[id=radio_cs_no]').is(":checked") )  isCS = 0;
+
+				if( $('input[id=radio_international_yes]').is(":checked") ) international = 1;
+				else if ( $('input[id=radio_international_no]').is(":checked") )  international = 0;
+
+				if( $('input[id=radio_computer_yes]').is(":checked") ) ownMachine = 1;
+				else if ( $('input[id=radio_computer_no]').is(":checked") )  ownMachine = 0;
+				
+				// post data to backend
+				var blob = { 
+					"ownMachine": ownMachine, 
+					"cs": isCS, 
+					"gender": gender, 
+					"progExp": experience, 
+					"age": age, 
+					"international": international 
+				}
+				logger.log( blob );
+				
+				$.ajax({ 
+					headers:{
+						"content-Type": "application/json",
+						"Authorization": "Basic " + btoa(env.API_USERNAME + ":" + env.API_PASSWORD)
+					},
+					url: "http://nassdb.herokuapp.com/api/v1/surveys/",
+					type: "POST",
+					crossDomain: true,
+					async: true, 
+					data: JSON.stringify( blob ),
+					dataType: 'json',
+					success: function( res ) {
+						logger.log( res );
+						showFactLoader();
+					},
+					error: function( err ){
+						logger.log( err );
+					}  
+				});							
+				
+			} );
+		}
 	}
 	
 	function onFactHandler() {
@@ -111,14 +196,6 @@ var Main = (function() {
 			} );					
 		}, loader_time );
 	}
-	
-	function onWelcomeHandler() {
-		$("#welcome").animate( { opacity: '0' }, ( transition_time / 2 ), function()
-		{
-			$("#welcome").hide();
-				showFactLoader();
-		} );
-	}	
 	
 	function showFact() {
 		var str = "Fact " + ( current_fact + 1 ) + " of " + facts.length;
@@ -316,34 +393,7 @@ var Main = (function() {
 			{
 				$("#tutor_interview").hide();
 				
-				// // post data to backend
-				var blob = { 
-					"ownMachine": 1, 
-					"cs": 0, 
-					"gender": "f", 
-					"progExp": 0, 
-					"age": 100, 
-					"international": 0 
-				};
-
-				$.ajax({ 
-					headers:{
-						"content-Type": "application/json",
-						"Authorization": "Basic " + btoa(env.API_USERNAME + ":" + env.API_PASSWORD)
-					},
-					url: "http://nassdb.herokuapp.com/api/v1/surveys/",
-					type: "POST",
-					crossDomain: true,
-					async: true, 
-					data: JSON.stringify(blob),
-					dataType: 'json',
-					success: function( res ) {
-						logger.log( res );
-					},
-					error: function( err ){
-						logger.log( err );
-					}  
-				});
+				
 			
 				// update UI				
 				for( var i = 0; i < 9; i++ ) {

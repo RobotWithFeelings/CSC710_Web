@@ -35,10 +35,81 @@
 			</div>
 			<div id="welcome">
 				<div class="welcomeTitle">Welcome.</div>
-				<div class="welcomeBody"><p>Thank you for coming here today. Today, you will be working with this computer. This computer is designed to help you learn information. The computer will begin by providing you with a fact. After reading the fact, you should use the mouse to indicate how familiar you are with that particular fact. The computer will then select the next fact, based on your level of familliarity with the previous fact. In other words, the more you know about the topic associated with a fact, the less likely you will be to receive additional facts on that topic.</p>
+				<div class="welcomeBody"><p>Today, you will be working with the NAS Tutoring System. This system is designed to help you learn information. First, you will be provided with a fact. After reading the fact, you should use the mouse to indicate how familiar you are with that particular fact. The system then selects the next fact, based on your level of familliarity with the previous fact. The more you know about the topic associated with a fact, the less likely you will be to receive additional facts on that topic.</p>
 				
-				<p> You will receive a total of 20 facts, chosen from a list of 1,000 possible facts. After completing the tutoring session, you will take a test. The test will involve 12 multiple-choice questions, randomly chosen from a set of 5,000 questions. The Computer will then evaluate your performance on the test, and evaluate its own performance as a tutor.</div>
+				<p> You will receive a total of <i>20 facts</i>, chosen from a list <i>of 1,000 possible facts</i>. After completing the tutoring session, you will take a test. The test will involve 12 multiple-choice questions, randomly chosen from a set of 5,000 questions. The system will then evaluate your performance on the test and evaluate its own performance as a tutor.</div>
 				<div id="welcomeBtnContainer"><button id="welcomeBtn">Begin</button></div>
+			</div>
+			<div id="demographics">
+				<div class="welcomeTitle">Tell us about you.</div>
+				<div class="questionSubtitle">Don't worry, we keep everything anonymized and secure. After you complete this form, you will recieve a user identifier. Write this identifier down in case you are disconnected. This way we can take you right back to where you left off. </div><br>
+				<div class="questionContainer" >
+					<div class="demo_question">
+						<div class="adjective">What is your gender?</div>
+						<div id="demoContainer">
+							<div class="demoBtn">						
+								<input type="radio" name="demo_group1" id="radio_gender_male" />
+								<label for="radio_gender_male">Male</label>					
+							</div>
+							<div class="demoBtn">						
+								<input type="radio" name="demo_group1" id="radio_gender_female" />
+								<label for="radio_gender_female">Female</label>
+							</div>
+						</div>
+					</div>
+					<div class="demo_question">
+						<div class="adjective" id="interview_tutor_adjective1">Are you a computer science student?</div>
+						<div id="demoContainer">
+							<div class="demoBtn">						
+								<input type="radio" name="demo_group2" id="radio_cs_yes" />
+								<label for="radio_cs_yes">Yes</label>							
+							</div>
+							<div class="demoBtn">						
+								<input type="radio" name="demo_group2" id="radio_cs_no" />
+								<label for="radio_cs_no">No</label>
+							</div>
+						</div>
+					</div>
+					<div class="demo_question">
+						<div class="adjective" id="interview_tutor_adjective1">Are you an international student?</div>
+						<div id="demoContainer">
+							<div class="demoBtn">						
+								<input type="radio" name="demo_group3" id="radio_international_yes" />
+								<label for="radio_international_yes">Yes</label>							
+							</div>
+							<div class="demoBtn">						
+								<input type="radio" name="demo_group3" id="radio_international_no" />
+								<label for="radio_international_no">No</label>
+							</div>
+						</div>
+					</div>
+					<div class="demo_question">
+						<div class="adjective" id="interview_tutor_adjective1">Are you currently using a computer you own?</div>
+						<div id="demoContainer">
+							<div class="demoBtn">						
+								<input type="radio" name="demo_group4" id="radio_computer_yes" />
+								<label for="radio_computer_yes">Yes</label>							
+							</div>
+							<div class="demoBtn">						
+								<input type="radio" name="demo_group4" id="radio_computer_no" />
+								<label for="radio_computer_no">No</label>
+							</div>
+						</div>
+					</div>
+					<div class="demo_question">
+						<div class="adjective" id="interview_tutor_adjective1">What is your age?</div>
+						<div id="demoContainer">
+							<input class="textbox" type="text" name="demo_text" id="demo_text_age"/>
+						</div>
+					</div>
+					<div class="demo_question">
+						<div class="adjective" id="interview_tutor_adjective1">How many years of programming experience do you have?</div>						
+						<div id="demoContainer">
+							<input class="textbox" type="text" name="demo_text" id="demo_text_experience"/>
+						</div>
+					</div>
+				</div>		
+				<div id="welcomeBtnContainer"><button id="demographicsBtn">Start Tutoring Session</button></div>				
 			</div>
 			<div id="facts">
 				<div class="questionTitle">Part 1: Questionnaire</div>
