@@ -12,6 +12,7 @@ var Main = (function() {
 	var questions = [];
 	var interview_tutor_questions = [];
 	var interview_researcher_questions = [];
+	var evaluation;
 	
 	function init(){		
 		logger.log( "main initializer");		
@@ -19,6 +20,9 @@ var Main = (function() {
 		init_questions();
 		init_tutor_questions();
 		init_researcher_questions();
+		
+		evaluation = getQueryString( "e", "1" );
+		logger.log( evaluation );
 		
 		$("#welcomeBtn").button();
 		$("#welcomeBtn").click(onWelcomeHandler);	
@@ -63,6 +67,7 @@ var Main = (function() {
 		$("#transition_scoring").hide();
 		$("#scoring").hide();
 		$("#transition_interview").hide();	
+		$("#transition_interview2").hide();	
 		$("#tutor_interview").hide();	
 		$("#researcher_interview").hide();	
 		$("#complete").hide();
@@ -133,7 +138,7 @@ var Main = (function() {
 				}
 				logger.log( blob );
 				
-				$.ajax({ 
+				/*$.ajax({ 
 					headers:{
 						"content-Type": "application/json",
 						"Authorization": "Basic " + btoa(env.API_USERNAME + ":" + env.API_PASSWORD)
@@ -151,8 +156,9 @@ var Main = (function() {
 					error: function( err ){
 						logger.log( err );
 					}  
-				});							
+				});*/							
 				
+				showFactLoader();				
 			} );
 		}
 	}
@@ -323,7 +329,11 @@ var Main = (function() {
 			$("#scoring").animate( { opacity: '0' }, ( transition_time / 2 ), function()
 			{
 				$("#scoring").hide();
+				if( evaluation == 1 ) {
 					showTransitionInterview();
+				}else {
+					showTransitionInterview2();
+				}					
 			} );				
 		}else {
 			showScoring();			
@@ -334,6 +344,12 @@ var Main = (function() {
 		$("#transition_interview").css( "opacity", "0");
 		$("#transition_interview").show();
 		$("#transition_interview").animate( { opacity: '1' }, transition_time );		
+	}
+	
+	function showTransitionInterview2() {		
+		$("#transition_interview2").css( "opacity", "0");
+		$("#transition_interview2").show();
+		$("#transition_interview2").animate( { opacity: '1' }, transition_time );		
 	}
 	
 	function onTransitionInterviewHandler(){
@@ -500,7 +516,19 @@ var Main = (function() {
 		interview_researcher_questions[7] = { "text" : "Passionate" };
 		interview_researcher_questions[8] = { "text" : "Focused" };		
 	}
-		
+	
+	function getQueryString(key, default_) {
+		if (default_ == null) default_ = "";
+
+		key = key.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+
+		var regex = new RegExp("[\\?&]"+key+"=([^&#]*)");
+		var qs = regex.exec(window.location.href);
+		if(qs == null)
+			return default_;
+		else return qs[1];
+	}
+	
 	return {
 		init: init,
 	};	
