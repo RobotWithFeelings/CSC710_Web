@@ -530,10 +530,10 @@ var Main = (function() {
 	}
 		
 	function init_questions() {
-		questions[0] = { "text" : "Which state most international students apply to for college?", "answer_0" : "Texas", "answer_1" : "Maine", "answer_2" : "Illinois", "answer_3" : "California", "answer_4" : "New York", "feedback" : "Feedback: correct!", "icon" : "1" };
+		questions[0] = { "text" : "In which state do most international students apply to for college?", "answer_0" : "Texas", "answer_1" : "Maine", "answer_2" : "Illinois", "answer_3" : "California", "answer_4" : "New York", "feedback" : "Feedback: correct!", "icon" : "1" };
 		questions[1] = { "text" : "What percentage of the school's financial aid fund goes to affluent students?", "answer_0" : "10%", "answer_1" : "20%", "answer_2" : "30%", "answer_3" : "40%", "answer_4" : "50%", "feedback" : "Feedback: correct again!", "icon" : "1"  };
-		questions[2] = { "text" : "What percentage of entering class is international?", "answer_0" : "5%", "answer_1" : "10%", "answer_2" : "15%", "answer_3" : "20%", "answer_4" : "25%", "feedback" : "Feedback: incorrect", "icon" : "0"  };
-		questions[3] = { "text" : "Most students attend college no more than how many away from their home town?", "answer_0" : "100 miles", "answer_1" : "500 miles", "answer_2" : "1,000 miles", "answer_3" : "1,500 miles", "answer_4" : "2,000 miles", "feedback" : "Feedback: correct!", "icon" : "1" };
+		questions[2] = { "text" : "What percentage of the 2015 undergraduate class was international?", "answer_0" : "5%", "answer_1" : "10%", "answer_2" : "15%", "answer_3" : "20%", "answer_4" : "25%", "feedback" : "Feedback: incorrect", "icon" : "0"  };
+		questions[3] = { "text" : "Most students attend college no more than how many miles away from their home town?", "answer_0" : "100 miles", "answer_1" : "500 miles", "answer_2" : "1,000 miles", "answer_3" : "1,500 miles", "answer_4" : "2,000 miles", "feedback" : "Feedback: correct!", "icon" : "1" };
 		/*questions[4] = { "text" : "How many hours a week do high school students spend studying?", "answer_0" : "1 hour", "answer_1" : "3 hours", "answer_2" : "6 hours", "answer_3" : "12 hours", "answer_4" : "18 hours", "feedback" : "Feedback: correct!" };
 		questions[5] = { "text" : "What fraction of students report that they felt overwhelmed at college?", "answer_0" : "A quarter", "answer_1" : "A third", "answer_2" : "Half", "answer_3" : "Two thirds", "answer_4" : "Three quarters", "feedback" : "Feedback: correct!" };
 		questions[6] = { "text" : "A quarter of college freshmen said they would need tutoring in which subject?", "answer_0" : "Biology", "answer_1" : "English", "answer_2" : "American History", "answer_3" : "Psychology", "answer_4" : "Math", "feedback" : "Feedback: correct!" };
