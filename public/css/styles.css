@@ -252,6 +252,40 @@ input { vertical-align: middle; margin-top: 0px;}
 	padding-left: 40px;
 }
 
+.userid {
+	position: relative;
+	text-align: right;
+	top: 10px;
+	right: 10px;
+	font-size: 14px;
+	color: #c0c0c0;
+	font-family:"arial";
+	-webkit-user-select: none;	
+}
+
+.recoveryForm {
+	width: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+	display: block;
+}
+
+.recoveryForm label {
+	text-align: center;
+	font-size: 18px;
+	color: #4a4a4a;
+	font-family:"arial";
+	-webkit-user-select: none;
+}
+
+.recovery_textbox {
+	position: relative;
+    height: 25px; 
+    width: 200px;
+	border: 1px solid #eeeeee; 
+  } 
+
 #demoContainer {
 	position: relative;
 	margin-left: 100px;

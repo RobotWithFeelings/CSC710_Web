@@ -3,7 +3,7 @@ var Main = (function() {
 
 	var transition_time = 500;
 	var loader_time = 0;
-	var loader_rand = 5000;
+	var loader_rand = 50;
 	var current_fact = 0;
 	var current_question = 0;
 	var current_review_question =0;
@@ -13,6 +13,8 @@ var Main = (function() {
 	var interview_tutor_questions = [];
 	var interview_researcher_questions = [];
 	var evaluation;
+	var recovery;
+	var user_id;
 	
 	function init(){		
 		logger.log( "main initializer");		
@@ -24,11 +26,17 @@ var Main = (function() {
 		evaluation = getQueryString( "e", "1" );
 		logger.log( evaluation );
 		
+		recovery = getQueryString( "r", "0" );
+		logger.log( recovery );
+		
 		$("#welcomeBtn").button();
 		$("#welcomeBtn").click(onWelcomeHandler);	
 		
 		$("#demographicsBtn").button();
 		$("#demographicsBtn").click(onDemographicsHandler);	
+		
+		$("#recoveryBtn").button();
+		$("#recoveryBtn").click(onRecoveryHandler);	
 		
 		$("#factBtn").button();
 		$("#factBtn").click(onFactHandler);
@@ -57,7 +65,9 @@ var Main = (function() {
 		$("#completeBtn").button();
 		$("#completeBtn").click(onResetHandler);
 		
-		$("#welcome").show();
+		$("#userid").hide();
+		$("#welcome").hide();
+		$("#recovery").hide();
 		$("#demographics").hide();
 		$("#loader_facts").hide();
 		$("#loader_questions").hide();		
@@ -71,6 +81,13 @@ var Main = (function() {
 		$("#tutor_interview").hide();	
 		$("#researcher_interview").hide();	
 		$("#complete").hide();
+		
+		if( recovery == 1 ) {			
+			$("#recovery").show();		
+		}else {
+			$("#welcome").show();		
+		}
+		
 	}
 	
 	function showWelcome() {
@@ -138,7 +155,7 @@ var Main = (function() {
 				}
 				logger.log( blob );
 				
-				/*$.ajax({ 
+				$.ajax({ 
 					headers:{
 						"content-Type": "application/json",
 						"Authorization": "Basic " + btoa(env.API_USERNAME + ":" + env.API_PASSWORD)
@@ -151,17 +168,40 @@ var Main = (function() {
 					dataType: 'json',
 					success: function( res ) {
 						logger.log( res );
+						
+						user_id = res.name;
+						$("#userid").html( "User Identifier: " + user_id );
+						$("#userid").show();			
+						
 						showFactLoader();
 					},
 					error: function( err ){
 						logger.log( err );
 					}  
-				});*/							
-				
-				showFactLoader();				
+				});										
 			} );
 		}
 	}
+	
+	function showRecovery() {
+		$("#recovery").css( "opacity", "0");
+		$("#recovery").show();
+		$("#recovery").animate( { opacity: '1' }, transition_time );			
+	}
+	
+	function onRecoveryHandler() {
+			user_id = $('input[id=recovery_text]').val();
+			
+			if( user_id != "" ) {
+				$("#userid").html( "User Identifier: " + user_id );
+				$("#userid").show();
+				$("#recovery").animate( { opacity: '0' }, ( transition_time / 2 ), function()
+				{
+					$("#recovery").hide();
+					showFactLoader();
+				} );			
+			}			
+	}	
 	
 	function onFactHandler() {
 		if( $('input[name=radio]').is(":checked") ) {		

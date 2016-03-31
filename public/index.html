@@ -27,6 +27,7 @@
 	<div id="container">
 		<div id="logo"></div>
 		<div id="content">
+			<div class="userid" id="userid">userid: washington</div>
 			<div id="loader_facts" class="loader">
 				<div class="loader_text">Choosing Next Fact...</div>
 			</div>
@@ -39,6 +40,15 @@
 				
 				<p> You will receive a total of <i>20 facts</i>, chosen from a list <i>of 1,000 possible facts</i>. After completing the tutoring session, you will take a test. The test will involve 12 multiple-choice questions, randomly chosen from a set of 5,000 questions. The system will then evaluate your performance on the test and evaluate its own performance as a tutor.</div>
 				<div id="welcomeBtnContainer"><button id="welcomeBtn">Begin</button></div>
+			</div>
+			<div id="recovery">
+				<div class="welcomeTitle">Well, this is embarassing.</div>
+				<div class="welcomeBody"><p>Something must have gone wrong along the way.<br><br>Fear not! Enter your user identifier below, and you can restart the study with the same questions you received earlier.</p></div>
+				<div class="recoveryForm"><label>User Identifier</label></div>
+				<div class="recoveryForm">	
+					<input class="recovery_textbox" type="text" name="recovery_text" id="recovery_text"/>
+				</div>
+				<div id="welcomeBtnContainer"><button id="recoveryBtn">Start again</button></div>
 			</div>
 			<div id="demographics">
 				<div class="welcomeTitle">Tell us about you.</div>
@@ -171,9 +181,7 @@
 			</div>
 			<div id="transition_scoring">
 				<div class="welcomeTitle">Super.</div>
-				<div class="welcomeBody"><p>Now we will evaluate your performance on the test, as well as the performance of the tutor in assisting you. We'll review each question you answered.</p>
-				
-				<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</div>
+				<div class="welcomeBody"><p>Now we will evaluate your performance on the test, as well as the performance of NAS Tutoring in assisting you.<br><br>We'll review each question you answered.</p></div>
 				<div id="welcomeBtnContainer"><button id="transitionScoringBtn">Ok, let's take a look</button></div>
 			</div>
 			<div id="scoring">
