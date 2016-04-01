@@ -119,8 +119,8 @@ var Main = (function() {
 		experience = $('input[id=demo_text_experience]').val();
 		
 		if( ( age == "" ) || ( experience == "" )  ) return;		
-		if( age < 0 || age > 100 ) return;
-		if( experience < 0 || experience > 100 ) return;
+		if( age < 1 || age > 100 ) return;
+		if( experience < 0 || experience > 1000 ) return;
 		
 		if( checked ) {
 			$("#demographics").animate( { opacity: '0' }, ( transition_time / 2 ), function()
