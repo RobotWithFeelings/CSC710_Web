@@ -35,6 +35,9 @@ var Main = (function() {
 		$("#demographicsBtn").button();
 		$("#demographicsBtn").click(onDemographicsHandler);	
 		
+		$("#idBtn").button();
+		$("#idBtn").click(onIDFormHandler);	
+		
 		$("#recoveryBtn").button();
 		$("#recoveryBtn").click(onRecoveryHandler);	
 		
@@ -67,6 +70,7 @@ var Main = (function() {
 		
 		$("#userid").hide();
 		$("#welcome").hide();
+		$("#id_form").hide();
 		$("#recovery").hide();
 		$("#demographics").hide();
 		$("#loader_generic").hide();
@@ -186,16 +190,33 @@ var Main = (function() {
 						
 						$("#loader_generic").animate( { opacity: '0' }, ( transition_time / 2 ), function() {
 							$("#loader_generic").hide();
-							showFactLoader();
+							showIDForm();
 						} );						
 					},
 					error: function( err ) {
 						logger.log( err );
 					}  
 				});								
-				//showFactLoader();
 			} );
 		}
+	}
+	
+	function showIDForm() {
+		var msg = "Your user identifier is: " + user_id;
+		
+		$("#idTitle").html( msg );
+		$("#id_form").css( "opacity", "0");
+		$("#id_form").show();				
+		$("#id_form").animate( { opacity: '1' }, transition_time );	
+	}	
+	
+	function onIDFormHandler() {
+		$("#id_form").animate( { opacity: '0' }, ( transition_time / 2 ), function()
+		{
+			$("#id_form").hide();
+			showFactLoader();
+		} );
+		
 	}
 	
 	function showRecovery() {

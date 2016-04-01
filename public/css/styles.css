@@ -101,6 +101,23 @@ input { vertical-align: middle; margin-top: 0px;}
 	-webkit-user-select: none;
 }
 
+.idTitle {
+	text-align: center;
+	padding-top: 150px;
+	padding-bottom: 15px;
+	color: #4a4a4a;
+	font-size: 36px;
+	-webkit-user-select: none;
+}
+
+.idSubtitle {
+	padding-bottom: 15px;
+	text-align: center;
+	color: #4a4a4a;
+	font-size: 14px;
+	-webkit-user-select: none;
+}
+
 .questionTitle {
 	padding-top: 25px;
 	padding-left: 40px;
