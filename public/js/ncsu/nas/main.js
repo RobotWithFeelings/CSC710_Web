@@ -456,7 +456,7 @@ var Main = (function() {
 		}	
 		
 		//var user_url = "http://nassdb.herokuapp.com/api/v1/surveys/" + user_id;
-		var user_url = "http://nassdb.herokuapp.com/api/v1/surveys/chutulu";
+		var user_url = "http://nassdb.herokuapp.com/api/v1/surveys/amucise";
 		
 		if( answered && current_interview_question == 0 ) {
 			current_interview_question++;
