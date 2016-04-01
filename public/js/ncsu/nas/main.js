@@ -3,7 +3,7 @@ var Main = (function() {
 
 	var transition_time = 500;
 	var loader_time = 0;
-	var loader_rand = 50;
+	var loader_rand = 5000;
 	var current_fact = 0;
 	var current_question = 0;
 	var current_review_question =0;
@@ -92,6 +92,7 @@ var Main = (function() {
 		}else {
 			$("#welcome").show();		
 		}
+		
 	}
 	
 	function showWelcome() {
