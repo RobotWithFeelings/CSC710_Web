@@ -65,7 +65,7 @@ var Main = (function() {
 		$("#completeBtn").button();
 		$("#completeBtn").click(onResetHandler);
 		
-		$("#userid").show();
+		$("#userid").hide();
 		$("#welcome").hide();
 		$("#recovery").hide();
 		$("#demographics").hide();
@@ -83,12 +83,11 @@ var Main = (function() {
 		$("#researcher_interview").hide();	
 		$("#complete").hide();
 		
-		/*if( recovery == 1 ) {			
+		if( recovery == 1 ) {			
 			$("#recovery").show();		
 		}else {
 			$("#welcome").show();		
-		}*/
-		showTutorInterview();		
+		}	
 	}
 	
 	function showWelcome() {
@@ -455,8 +454,8 @@ var Main = (function() {
 			answered = ( answered && $( name ).is(":checked") );
 		}
 		
-		//var user_url = "http://nassdb.herokuapp.com/api/v1/surveys/name/" + user_id;
-		var user_url = "http://nassdb.herokuapp.com/api/v1/surveys/name/amucise";
+		var user_url = "http://nassdb.herokuapp.com/api/v1/surveys/name/" + user_id;
+		//var user_url = "http://nassdb.herokuapp.com/api/v1/surveys/name/amucise";
 		
 		if( answered && current_interview_question == 0 ) {
 			current_interview_question++;
