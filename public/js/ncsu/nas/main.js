@@ -65,7 +65,7 @@ var Main = (function() {
 		$("#completeBtn").button();
 		$("#completeBtn").click(onResetHandler);
 		
-		$("#userid").hide();
+		$("#userid").show();
 		$("#welcome").hide();
 		$("#recovery").hide();
 		$("#demographics").hide();
@@ -83,12 +83,12 @@ var Main = (function() {
 		$("#researcher_interview").hide();	
 		$("#complete").hide();
 		
-		if( recovery == 1 ) {			
+		/*if( recovery == 1 ) {			
 			$("#recovery").show();		
 		}else {
 			$("#welcome").show();		
-		}
-		
+		}*/
+		showTutorInterview();		
 	}
 	
 	function showWelcome() {
@@ -190,7 +190,6 @@ var Main = (function() {
 						} );						
 					},
 					error: function( err ) {
-						logger.log( "here!");
 						logger.log( err );
 					}  
 				});										
@@ -456,6 +455,9 @@ var Main = (function() {
 			answered = ( answered && $( name ).is(":checked") );
 		}	
 		
+		//var user_url = "http://nassdb.herokuapp.com/api/v1/surveys/" + user_id;
+		var user_url = "http://nassdb.herokuapp.com/api/v1/surveys/chutulu";
+		
 		if( answered && current_interview_question == 0 ) {
 			current_interview_question++;
 
@@ -464,14 +466,51 @@ var Main = (function() {
 			{
 				$("#tutor_interview").hide();
 				
+				// get data from UI				
+				//if( $('input[id=radio_gender_male]').is(":checked") ) gender = "m";
+				//else if ( $('input[id=radio_gender_female]').is(":checked") )  gender = "f";
 				
-			
-				// update UI				
-				for( var i = 0; i < 9; i++ ) {
-					var name = "input[name=group" + ( i + 1 ) + "]";
-					$( name ).prop ('checked', false);				
+				// post data to backend
+				var blob = { 
+					"q1": 1,
+					"q2": 2,
+					"q3": 3,
+					"q4": 4,
+					"q5": 5,
+					"q6": 6,
+					"q7": 7,
+					"q8": 8,
+					"q9": 9					
 				}
-				showResearcherInterview();	
+				logger.log( blob );
+				
+				$.ajax({ 
+					headers:{
+						"content-Type": "application/json",
+						"Authorization": "Basic " + btoa(env.API_USERNAME + ":" + env.API_PASSWORD)
+					},
+					url: user_url,
+					type: "PUT",
+					crossDomain: true,
+					async: true, 
+					data: JSON.stringify( blob ),
+					dataType: 'json',
+					success: function( res ) {
+						logger.log( res );						
+						$("#loader_generic").animate( { opacity: '0' }, ( transition_time / 2 ), function() {
+							$("#loader_generic").hide();
+								// update UI				
+								for( var i = 0; i < 9; i++ ) {
+									var name = "input[name=group" + ( i + 1 ) + "]";
+									$( name ).prop ('checked', false);				
+								}
+								showResearcherInterview();	
+						} );						
+					},
+					error: function( err ) {
+						logger.log( err );
+					}  
+				});				
 			} );
 		}else if( answered && current_interview_question == 1 ) {
 			current_interview_question++;
@@ -481,10 +520,46 @@ var Main = (function() {
 			{
 				$("#researcher_interview").hide();
 				
-				// post data to backend				
-							
+				// get data from UI				
+				//if( $('input[id=radio_gender_male]').is(":checked") ) gender = "m";
+				//else if ( $('input[id=radio_gender_female]').is(":checked") )  gender = "f";
 				
-				showComplete();
+				// post data to backend
+				var blob = { 
+					"q10": 10,
+					"q11": 9,
+					"q12": 3,
+					"q13": 4,
+					"q14": 5,
+					"q15": 6,
+					"q16": 7,
+					"q17": 8,
+					"q18": 9					
+				}
+				logger.log( blob );
+				
+				$.ajax({ 
+					headers:{
+						"content-Type": "application/json",
+						"Authorization": "Basic " + btoa(env.API_USERNAME + ":" + env.API_PASSWORD)
+					},
+					url: user_url,
+					type: "PUT",
+					crossDomain: true,
+					async: true, 
+					data: JSON.stringify( blob ),
+					dataType: 'json',
+					success: function( res ) {
+						logger.log( res );						
+						$("#loader_generic").animate( { opacity: '0' }, ( transition_time / 2 ), function() {
+							$("#loader_generic").hide();
+								showComplete();	
+						} );						
+					},
+					error: function( err ) {
+						logger.log( err );
+					}  
+				});
 			} );
 		}		
 	}
