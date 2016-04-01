@@ -1,8 +1,9 @@
 html, body {
 	margin:0px;
 	min-width: 810px;
+	min-height: 500px;
 	font-family: "arial";
-	overflow:hidden;
+	
 	background-color: #f6f6f6;
 }
 

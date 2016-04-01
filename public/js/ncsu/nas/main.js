@@ -385,7 +385,7 @@ var Main = (function() {
 				if( evaluation == 0 ) {
 					showTransitionInterview2();
 				}else {
-					showTransitionInterview1();
+					showTransitionInterview();
 				}					
 			} );				
 		}else {
