@@ -68,7 +68,7 @@ var Main = (function() {
 		$("#userid").hide();
 		$("#welcome").hide();
 		$("#recovery").hide();
-		$("#demographics").show();
+		$("#demographics").hide();
 		$("#loader_generic").hide();
 		$("#loader_facts").hide();
 		$("#loader_questions").hide();		
@@ -83,11 +83,11 @@ var Main = (function() {
 		$("#researcher_interview").hide();	
 		$("#complete").hide();
 		
-		/*if( recovery == 1 ) {			
+		if( recovery == 1 ) {			
 			$("#recovery").show();		
 		}else {
 			$("#welcome").show();		
-		}*/
+		}
 		
 	}
 	
@@ -114,7 +114,7 @@ var Main = (function() {
 	function onDemographicsHandler() {		
 		var age;
 		var experience;
-		var checked = $('input[name=demo_group1]').is(":checked") && $('input[name=demo_group2]').is(":checked") && $('input[name=demo_group3]').is(":checked") && $('input[name=demo_group4]').is(":checked");		
+		var checked = $('input[name=demo_group1]').is(":checked") && $('input[name=demo_group2]').is(":checked") && $('input[name=demo_group3]').is(":checked");		
 		
 		age = $('input[id=demo_text_age]').val();
 		experience = $('input[id=demo_text_experience]').val();
