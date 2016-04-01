@@ -178,7 +178,7 @@ var Main = (function() {
 						logger.log( res );																			
 						if( res.survey != undefined ) {
 							//logger.log( res.survey.name );
-							user_id = res.survey.name;
+							user_id = res.survey.name.toLowerCase();
 							$("#userid").html( "User Identifier: " + user_id );
 							$("#userid").show();	
 						}
