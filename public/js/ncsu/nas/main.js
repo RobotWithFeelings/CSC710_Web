@@ -87,7 +87,7 @@ var Main = (function() {
 			$("#recovery").show();		
 		}else {
 			$("#welcome").show();		
-		}	
+		}
 	}
 	
 	function showWelcome() {
@@ -113,7 +113,7 @@ var Main = (function() {
 	function onDemographicsHandler() {		
 		var age;
 		var experience;
-		var checked = $('input[name=demo_group1]').is(":checked") && $('input[name=demo_group2]').is(":checked") && $('input[name=demo_group3]').is(":checked");		
+		var checked = $('input[name=demo_group1]').is(":checked") && $('input[name=demo_group2]').is(":checked") && $('input[name=demo_group3]').is(":checked") && $('input[name=demo_group4]').is(":checked");		
 		
 		age = $('input[id=demo_text_age]').val();
 		experience = $('input[id=demo_text_experience]').val();
@@ -134,7 +134,8 @@ var Main = (function() {
 				var gender;
 				var isCS;
 				var international;
-				var ev;
+				var publicComputer;
+				var penPaper;
 				
 				if( $('input[id=radio_gender_male]').is(":checked") ) gender = "m";
 				else if ( $('input[id=radio_gender_female]').is(":checked") )  gender = "f";
@@ -145,21 +146,21 @@ var Main = (function() {
 				if( $('input[id=radio_international_yes]').is(":checked") ) international = 1;
 				else if ( $('input[id=radio_international_no]').is(":checked") )  international = 0;
 
-				//if( $('input[id=radio_computer_yes]').is(":checked") ) ownMachine = 1;
-				//else if ( $('input[id=radio_computer_no]').is(":checked") )  ownMachine = 0;
+				if( $('input[id=radio_computer_yes]').is(":checked") ) publicComputer = 1;
+				else if ( $('input[id=radio_computer_no]').is(":checked") )  publicComputer = 0;
 				
-				if( evaluation == 0 ) ev = "pp";
-				else if( evaluation == 1 ) ev = "oc";
-				else if( evaluation == 2 ) ev = "dc";
+				if( evaluation == 0 ) penPaper = 1;
+				else if( evaluation == 1 ) penPaper = 0;
 				
 				// post data to backend
-				var blob = { 
+				var blob = {
+					"pubComp" : publicComputer,
 					"cs": isCS, 
 					"gender": gender, 
 					"progExp": experience, 
 					"age": age, 
 					"international": international,
-					"eval" : ev
+					"penPaper" : penPaper
 				}
 				logger.log( blob );
 				
