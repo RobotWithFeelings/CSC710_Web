@@ -68,7 +68,7 @@ var Main = (function() {
 		$("#userid").hide();
 		$("#welcome").hide();
 		$("#recovery").hide();
-		$("#demographics").hide();
+		$("#demographics").show();
 		$("#loader_generic").hide();
 		$("#loader_facts").hide();
 		$("#loader_questions").hide();		
@@ -83,11 +83,11 @@ var Main = (function() {
 		$("#researcher_interview").hide();	
 		$("#complete").hide();
 		
-		if( recovery == 1 ) {			
+		/*if( recovery == 1 ) {			
 			$("#recovery").show();		
 		}else {
 			$("#welcome").show();		
-		}
+		}*/
 		
 	}
 	
@@ -135,7 +135,7 @@ var Main = (function() {
 				var gender;
 				var isCS;
 				var international;
-				var ownMachine;
+				var ev;
 				
 				if( $('input[id=radio_gender_male]').is(":checked") ) gender = "m";
 				else if ( $('input[id=radio_gender_female]').is(":checked") )  gender = "f";
@@ -146,17 +146,21 @@ var Main = (function() {
 				if( $('input[id=radio_international_yes]').is(":checked") ) international = 1;
 				else if ( $('input[id=radio_international_no]').is(":checked") )  international = 0;
 
-				if( $('input[id=radio_computer_yes]').is(":checked") ) ownMachine = 1;
-				else if ( $('input[id=radio_computer_no]').is(":checked") )  ownMachine = 0;
+				//if( $('input[id=radio_computer_yes]').is(":checked") ) ownMachine = 1;
+				//else if ( $('input[id=radio_computer_no]').is(":checked") )  ownMachine = 0;
+				
+				if( evaluation == 0 ) ev = "pp";
+				else if( evaluation == 1 ) ev = "oc";
+				else if( evaluation == 2 ) ev = "dc";
 				
 				// post data to backend
 				var blob = { 
-					"ownMachine": ownMachine, 
 					"cs": isCS, 
 					"gender": gender, 
 					"progExp": experience, 
 					"age": age, 
-					"international": international 
+					"international": international,
+					"eval" : ev
 				}
 				logger.log( blob );
 				
@@ -380,10 +384,10 @@ var Main = (function() {
 			$("#scoring").animate( { opacity: '0' }, ( transition_time / 2 ), function()
 			{
 				$("#scoring").hide();
-				if( evaluation == 1 ) {
-					showTransitionInterview();
-				}else {
+				if( evaluation == 0 ) {
 					showTransitionInterview2();
+				}else {
+					showTransitionInterview1();
 				}					
 			} );				
 		}else {
