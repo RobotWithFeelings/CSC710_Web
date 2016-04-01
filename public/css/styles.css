@@ -233,7 +233,7 @@ input { vertical-align: middle; margin-top: 0px;}
 	padding-top: 30px;
 	padding-left: 40px;
 	padding-bottom: 10px;
-	font-size: 18px;
+	font-size: 16px;
 	color: #4a4a4a;
 	font-family:"arial";
 	-webkit-user-select: none;
@@ -243,7 +243,7 @@ input { vertical-align: middle; margin-top: 0px;}
 	padding-top: 20px;
 	padding-left: 40px;
 	padding-bottom: 5px;
-	font-size: 18px;
+	font-size: 14px;
 	color: #4a4a4a;
 	font-family:"arial";
 	-webkit-user-select: none;
@@ -372,36 +372,50 @@ input { vertical-align: middle; margin-top: 0px;}
 	-webkit-user-select: none;
 }
 
+.reviewSubtitle {
+	padding-left: 40px;
+	padding-top: 10px;
+	font-size: 16px;
+	color: #4a4a4a;
+	font-family:"arial";
+	-webkit-user-select: none;	
+}
+
 .questionReview {
+	padding-top: 10px;
 	padding-left: 0px;
 	padding-bottom: 10px;
-	font-size: 18px;
+	font-size: 16px;
 	color: #4a4a4a;
 	font-family:"arial";
 	-webkit-user-select: none;
 }
 
 .questionReviewFeedbackCorrect {
-	padding-top: 10px;
-	padding-left: 90px;
+	margin-top: 10px;
+	padding-top: -5px;
+	padding-left: 60px;
 	padding-bottom: 10px;
-	font-size: 18px;
+	width: 600px;
+	font-size: 15px;
 	color: #4a4a4a;
 	font-family:"arial";
-	background-image: url("../images/checkmark.png");
+	/*background-image: url("../images/checkmark.png");*/
 	background-repeat: no-repeat;
 	background-position: 40px 0px;
 	-webkit-user-select: none;
 }
 
 .questionReviewFeedbackIncorrect {
-	padding-top: 10px;
-	padding-left: 90px;
+	margin-top: 10px;
+	padding-top: -5px;
+	padding-left: 60px;
 	padding-bottom: 10px;
-	font-size: 18px;
+	width: 600px;
+	font-size: 15px;
 	color: #4a4a4a;
 	font-family:"arial";
-	background-image: url("../images/xcheckmark.png");
+	/*background-image: url("../images/xcheckmark.png");*/
 	background-repeat: no-repeat;
 	background-position: 40px 0px;
 	-webkit-user-select: none;

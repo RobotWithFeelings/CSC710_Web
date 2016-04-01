@@ -354,8 +354,9 @@ var Main = (function() {
 	}
 	
 	function showScoring() {			
-		var str = "Question " + ( current_review_question + 1 ) + ":";
-		$("#questionNumberA").text( str );		
+		var str = "Questions " + ( current_review_question + 1 ) + " and " + ( current_review_question + 2);
+		$("#reviewSubtitle").text( str );
+		
 		$("#questionA").html( questions[current_review_question].text );
 		$("#questionReviewA").html( questions[current_review_question].feedback  );		
 		$("#questionReviewA").removeClass( "questionReviewFeedbackCorrect" );
@@ -363,9 +364,7 @@ var Main = (function() {
 		if( questions[current_review_question].icon == "1" ) $("#questionReviewA").addClass( "questionReviewFeedbackCorrect" );			
 		else $("#questionReviewA").addClass( "questionReviewFeedbackIncorrect" );
 		current_review_question++;
-		
-		str = "Question " + ( current_review_question + 1 ) + ":";
-		$("#questionNumberB").text( str );		
+	
 		$("#questionB").html( questions[current_review_question].text );
 		$("#questionReviewB").html( questions[current_review_question].feedback );
 		$("#questionReviewB").removeClass( "questionReviewFeedbackCorrect" );
@@ -611,7 +610,7 @@ var Main = (function() {
 	function init_facts() {
 		facts[0] = "76% of students get into their first choice college.";
 		facts[1] = "75% of the colleges and universities in the U.S. are <br>East of the Mississippi River.";
-		/*facts[2] = "Being an athlete increases your chances of being accepted to college.";
+		facts[2] = "Being an athlete increases your chances of being accepted to college.";
 		facts[3] = "46.5% of high school students frequently or occasionally fell asleep in class during their senior year.";
 		facts[4] = "Tuition increases for those who can pay full price, subsidizing the cost for those who cannot.";
 		facts[5] = "42% of freshmen expect to earn a master's degree.";
@@ -628,22 +627,33 @@ var Main = (function() {
 		facts[16] = "50% of college freshman earned a grade point average equal to or greater than an A- in high school.";
 		facts[17] = "55% of high school students took at least one AP class and 21.7% took at least five AP courses.";
 		facts[18] = "Only 18.2% of college students said national magazine college rankings were \"very important\" in their decision to attend their chosen school.";
-		facts[19] = "85% of students attending private colleges are awarded merit aid.";*/
+		facts[19] = "85% of students attending private colleges are awarded merit aid.";
 	}
 		
 	function init_questions() {
-		questions[0] = { "text" : "In which state do most international students apply to for college?", "answer_0" : "Texas", "answer_1" : "Maine", "answer_2" : "Illinois", "answer_3" : "California", "answer_4" : "New York", "feedback" : "Feedback: correct!", "icon" : "1" };
-		questions[1] = { "text" : "What percentage of the school's financial aid fund goes to affluent students?", "answer_0" : "10%", "answer_1" : "20%", "answer_2" : "30%", "answer_3" : "40%", "answer_4" : "50%", "feedback" : "Feedback: correct again!", "icon" : "1"  };
-		questions[2] = { "text" : "What percentage of the 2015 undergraduate class was international?", "answer_0" : "5%", "answer_1" : "10%", "answer_2" : "15%", "answer_3" : "20%", "answer_4" : "25%", "feedback" : "Feedback: incorrect", "icon" : "0"  };
-		questions[3] = { "text" : "Most students attend college no more than how many miles away from their home town?", "answer_0" : "100 miles", "answer_1" : "500 miles", "answer_2" : "1,000 miles", "answer_3" : "1,500 miles", "answer_4" : "2,000 miles", "feedback" : "Feedback: correct!", "icon" : "1" };
-		/*questions[4] = { "text" : "How many hours a week do high school students spend studying?", "answer_0" : "1 hour", "answer_1" : "3 hours", "answer_2" : "6 hours", "answer_3" : "12 hours", "answer_4" : "18 hours", "feedback" : "Feedback: correct!" };
-		questions[5] = { "text" : "What fraction of students report that they felt overwhelmed at college?", "answer_0" : "A quarter", "answer_1" : "A third", "answer_2" : "Half", "answer_3" : "Two thirds", "answer_4" : "Three quarters", "feedback" : "Feedback: correct!" };
-		questions[6] = { "text" : "A quarter of college freshmen said they would need tutoring in which subject?", "answer_0" : "Biology", "answer_1" : "English", "answer_2" : "American History", "answer_3" : "Psychology", "answer_4" : "Math", "feedback" : "Feedback: correct!" };
-		questions[7] = { "text" : "What percentage of high school seniors did not read a book for fun?", "answer_0" : "30%", "answer_1" : "40%", "answer_2" : "50%", "answer_3" : "60%", "answer_4" : "70%", "feedback" : "Feedback: correct!" };
-		questions[8] = { "text" : "What percentage of students live on campus?", "answer_0" : "40%", "answer_1" : "50%", "answer_2" : "65%", "answer_3" : "75%", "answer_4" : "90%", "feedback" : "Feedback: correct!" };
-		questions[9] = { "text" : "What percentage of students rated themselves as being in the top 10 percent of students or above-average in their academic ability?", "answer_0" : "25%", "answer_1" : "50%", "answer_2" : "60%", "answer_3" : "70%", "answer_4" : "80%", "feedback" : "Feedback: correct!" };
-		questions[10] = { "text" : "How much of a concern is paying back student loans for a college freshman?", "answer_0" : "Not a concern", "answer_1" : "A minor concern", "answer_2" : "Somewhat a concern", "answer_3" : "A major concern", "answer_4" : "Undecided", "feedback" : "Feedback: correct!" };
-		questions[11] = { "text" : "How much money can a family make and still be considered for needs based financial aid?", "answer_0" : "50k", "answer_1" : "100k", "answer_2" : "125k", "answer_3" : "150k", "answer_4" : "200k", "feedback" : "Feedback: correct!" };	*/
+		questions[0] = { "text" : "A majority of international students apply to college in which state?", "answer_0" : "Texas", "answer_1" : "Maine", "answer_2" : "Illinois", "answer_3" : "California", "answer_4" : "New York", "feedback" : "The tutor performed extremely well by providing very useful facts. Your answer to the question concerning preferred international student location was correct.", "icon" : "1" };
+		
+		questions[1] = { "text" : "What percentage of a school's financial aid budget goes to affluent students?", "answer_0" : "10%", "answer_1" : "20%", "answer_2" : "30%", "answer_3" : "40%", "answer_4" : "50%", "feedback" : "The tutor performed extremely well by providing very useful facts.  Your answer to the question concerning affluent student financial aid was correct.", "icon" : "1"  };
+		
+		questions[2] = { "text" : "International students comprise what percentage of the graduating class of 2015?", "answer_0" : "5%", "answer_1" : "10%", "answer_2" : "15%", "answer_3" : "20%", "answer_4" : "25%", "feedback" : "The tutor performed extremely well by providing very useful facts. Your answer to the question concerning international percentages was correct.", "icon" : "1"  };
+		
+		questions[3] = { "text" : "A majority of students attend college no more than how many miles away from their home town?", "answer_0" : "100 miles", "answer_1" : "500 miles", "answer_2" : "1,000 miles", "answer_3" : "1,500 miles", "answer_4" : "2,000 miles", "feedback" : "The tutor performed extremely well by providing very useful facts. Your answer to the question concerning distance from students' home town was correct.", "icon" : "1" };
+		
+		questions[4] = { "text" : "How many hours a week do high school students spend studying?", "answer_0" : "1 hour", "answer_1" : "3 hours", "answer_2" : "6 hours", "answer_3" : "12 hours", "answer_4" : "18 hours", "feedback" : "Your answer to the question concerning high school study habits was incorrect.", "icon" : "0" };
+				
+		questions[5] = { "text" : "What percentage of students report that they felt overwhelmed at college?", "answer_0" : "25%", "answer_1" : "35%", "answer_2" : "50%", "answer_3" : "65%", "answer_4" : "75%", "feedback" : "The tutor performed extremely well by providing very useful facts.  Your answer to the question concerning student stress levels was correct.", "icon" : "1"  };
+	
+		questions[6] = { "text" : "In which subject did a quarter of college freshmen say they needed tutoring?", "answer_0" : "Biology", "answer_1" : "English", "answer_2" : "American History", "answer_3" : "Psychology", "answer_4" : "Math", "feedback" : "The tutor performed extremely well by providing very useful facts. Your answer to the question concerning incoming tutoring needs was correct.", "icon" : "1"  };
+		
+		questions[7] = { "text" : "What percentage of high school seniors reported that they did not read a book for fun?", "answer_0" : "30%", "answer_1" : "40%", "answer_2" : "50%", "answer_3" : "60%", "answer_4" : "70%", "feedback" : "The tutor performed extremely well by providing very useful facts. Your answer to the question concerning high school reading habits was correct.", "icon" : "1"  };
+		
+		questions[8] = { "text" : "What percentage of students live on campus?", "answer_0" : "40%", "answer_1" : "50%", "answer_2" : "65%", "answer_3" : "75%", "answer_4" : "90%", "feedback" : "Your answer to the question concerning on campus housing was incorrect.", "icon" : "0"  };
+		
+		questions[9] = { "text" : "What percentage of students rated themselves as being above average in their academic ability?", "answer_0" : "25%", "answer_1" : "50%", "answer_2" : "60%", "answer_3" : "70%", "answer_4" : "80%", "feedback" : " Your answer to the question concerning student evaluations was incorrect.", "icon" : "0"  };
+		
+		questions[10] = { "text" : "How concerned are college freshmen about paying back student loans?", "answer_0" : "Not a concern", "answer_1" : "A minor concern", "answer_2" : "Somewhat a concern", "answer_3" : "A major concern", "answer_4" : "Undecided", "feedback" : "Your answer to the question about students' concerns was incorrect.", "icon" : "0"  };
+		
+		questions[11] = { "text" : "How high can a family's income be before they are ineligible for needs-based financial aid?", "answer_0" : "$50,000", "answer_1" : "$100,000", "answer_2" : "$125,000", "answer_3" : "$150,000", "answer_4" : "$200,000", "feedback" : "The tutor performed extremely well by providing very useful facts. Your answer to the question concerning needs-based financial aid was correct.", "icon" : "1"  };		
 	}
 	
 	function init_tutor_questions() {
