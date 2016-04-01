@@ -491,7 +491,7 @@ var Main = (function() {
 					"q6": answers[5],
 					"q7": answers[6],
 					"q8": answers[7],
-					"q9": answers[9]		
+					"q9": answers[8]		
 				}
 				logger.log( blob );
 				
