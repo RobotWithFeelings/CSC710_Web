@@ -453,9 +453,9 @@ var Main = (function() {
 		for( var i = 0; i < 9; i++ ) {
 			var name = "input[name=group" + ( i + 1 ) + "]";
 			answered = ( answered && $( name ).is(":checked") );
-		}	
+		}
 		
-		//var user_url = "http://nassdb.herokuapp.com/api/v1/surveys/" + user_id;
+		//var user_url = "http://nassdb.herokuapp.com/api/v1/surveys/name/" + user_id;
 		var user_url = "http://nassdb.herokuapp.com/api/v1/surveys/name/amucise";
 		
 		if( answered && current_interview_question == 0 ) {
@@ -466,21 +466,32 @@ var Main = (function() {
 			{
 				$("#tutor_interview").hide();
 				
-				// get data from UI				
-				//if( $('input[id=radio_gender_male]').is(":checked") ) gender = "m";
-				//else if ( $('input[id=radio_gender_female]').is(":checked") )  gender = "f";
+				// get data from UI	
+				var answers = [];
+				for( var question_id = 1; question_id < 10; question_id++)  {
+					for( var radio_id = 0; radio_id < 10; radio_id++ ) {
+						var q_id = "radio_question" + question_id + "_id" + radio_id;
+						var element =  "input[id=" + q_id + "]"; 
+						
+						if( $( element ).is( ":checked" ) ) {
+							answers[( question_id -1)] = ( radio_id + 1 );
+							break;
+						}					
+					}		
+				}
+				logger.log( answers );
 				
 				// post data to backend
 				var blob = { 
-					"q1": 1,
-					"q2": 2,
-					"q3": 3,
-					"q4": 4,
-					"q5": 5,
-					"q6": 6,
-					"q7": 7,
-					"q8": 8,
-					"q9": 9					
+					"q1": answers[0],
+					"q2": answers[1],
+					"q3": answers[2],
+					"q4": answers[3],
+					"q5": answers[4],
+					"q6": answers[5],
+					"q7": answers[6],
+					"q8": answers[7],
+					"q9": answers[9]		
 				}
 				logger.log( blob );
 				
@@ -521,20 +532,31 @@ var Main = (function() {
 				$("#researcher_interview").hide();
 				
 				// get data from UI				
-				//if( $('input[id=radio_gender_male]').is(":checked") ) gender = "m";
-				//else if ( $('input[id=radio_gender_female]').is(":checked") )  gender = "f";
+				var answers = [];
+				for( var question_id = 1; question_id < 10; question_id++)  {
+					for( var radio_id = 0; radio_id < 10; radio_id++ ) {
+						var q_id = "radio_question" + question_id + "_id" + radio_id;
+						var element =  "input[id=" + q_id + "]"; 
+						
+						if( $( element ).is( ":checked" ) ) {
+							answers[( question_id -1)] = ( radio_id + 1 );
+							break;
+						}					
+					}		
+				}
+				logger.log( answers );
 				
 				// post data to backend
 				var blob = { 
-					"q10": 10,
-					"q11": 9,
-					"q12": 3,
-					"q13": 4,
-					"q14": 5,
-					"q15": 6,
-					"q16": 7,
-					"q17": 8,
-					"q18": 9					
+					"q10": answers[0],
+					"q11": answers[1],
+					"q12": answers[2],
+					"q13": answers[3],
+					"q14": answers[4],
+					"q15": answers[5],
+					"q16": answers[6],
+					"q17": answers[7],
+					"q18": answers[8]					
 				}
 				logger.log( blob );
 				
