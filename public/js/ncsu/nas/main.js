@@ -192,7 +192,8 @@ var Main = (function() {
 					error: function( err ) {
 						logger.log( err );
 					}  
-				});										
+				});								
+				//showFactLoader();
 			} );
 		}
 	}
@@ -610,24 +611,24 @@ var Main = (function() {
 	function init_facts() {
 		facts[0] = "76% of students get into their first choice college.";
 		facts[1] = "75% of the colleges and universities in the U.S. are <br>East of the Mississippi River.";
-		/*facts[2] = "Being an athlete increases your chances of being accepted.";
-		facts[3] = "In their senior year, 46.5 percent of the students frequently or occasionally fell asleep in class.";
-		facts[4] = "Tuition increases so that those who can pay full price subsidize the cost for those who cannot.";
-		facts[5] = "Forty-two percent of freshmen expect to earn a master's degree.";
+		/*facts[2] = "Being an athlete increases your chances of being accepted to college.";
+		facts[3] = "46.5% of high school students frequently or occasionally fell asleep in class during their senior year.";
+		facts[4] = "Tuition increases for those who can pay full price, subsidizing the cost for those who cannot.";
+		facts[5] = "42% of freshmen expect to earn a master's degree.";
 		facts[6] = "Less than 5% of American families have saved enough for college.";
-		facts[7] = "Lots of kids who don’t need financial aid get it.";
-		facts[8] = "53% of all international students in the US come from China, Canada, India, Taiwan, S. Korea and Japan.";
-		facts[9] = "A recent panel of Admissions Representatives said that the Early pool applicants are typically NOT stronger and more qualified.";
-		facts[10] = "Two thirds of all college students get some form of financial aid.";
-		facts[11] = "Us colleges do not require students to declare majors upon admission.";
-		facts[12] = "It is possible to go to college without receiving a high school diploma.";
-		facts[13] = "College has a higher workload than most U.S. high schools.";
-		facts[14] = "Ivy League is used to describe several college football teams.";
-		facts[15] = "While many students live near enough to bring their laundry home, only 14 percent of freshman attend college 500 or more miles away.";
-		facts[16] = "About half of the freshman earned a grade point average no worse than an A- in high school.";
-		facts[17] = "Fifty-five percent of students took at least one Advanced Placement class and 21.7 percent took at least five AP courses.";
-		facts[18] = "The No. 1 reason students gave for attending their chosen schools was they have a \"very good reputation.\" Only 18.2 percent said national magazine college rankings were \"very important\" in their decision.";
-		facts[19] = "85% of students attending private colleges are awarded merit aid.";*/	
+		facts[7] = "Students who need financial aid are not guaranteed to receive it.";
+		facts[8] = "53% of all international students in the U.S. come from China, Canada, India, Taiwan, South Korea and Japan.";
+		facts[9] = "Early admission applicants are typically NOT stronger or more qualified than other applicants.";
+		facts[10] = "Two-thirds of all college students get some form of financial aid.";
+		facts[11] = "U.S. colleges do not require students to declare majors upon admission.";
+		facts[12] = "Students do not need to receive a high school diploma in order to go to college.";
+		facts[13] = "U.S. colleges have a higher workload than most U.S. high schools.";
+		facts[14] = "The term \"Ivy League\" is used to describe a college athletic conference.";
+		facts[15] = "Only 14% of freshman attend college 500 or more miles away.";
+		facts[16] = "50% of college freshman earned a grade point average equal to or greater than an A- in high school.";
+		facts[17] = "55% of high school students took at least one AP class and 21.7% took at least five AP courses.";
+		facts[18] = "Only 18.2% of college students said national magazine college rankings were \"very important\" in their decision to attend their chosen school.";
+		facts[19] = "85% of students attending private colleges are awarded merit aid.";*/
 	}
 		
 	function init_questions() {
