@@ -107,7 +107,6 @@ input { vertical-align: middle; margin-top: 0px;}
 	padding-bottom: 15px;
 	color: #4a4a4a;
 	font-size: 36px;
-	-webkit-user-select: none;
 }
 
 .idSubtitle {
@@ -278,7 +277,6 @@ input { vertical-align: middle; margin-top: 0px;}
 	font-size: 14px;
 	color: #c0c0c0;
 	font-family:"arial";
-	-webkit-user-select: none;	
 }
 
 .recoveryForm {
@@ -439,10 +437,23 @@ input { vertical-align: middle; margin-top: 0px;}
 }
 
 #copyright {
+	display: inline-block;
+	text-align: right;
 	padding-top: 3px;
-	padding-left: 600px;
+	width: 807px;
+	/*padding-left: 590px;*/
 	height: auto;
 	color: #4a4a4a;
 	font-size: 0.7em;
+}
+
+.errorMsg {
+	position: absolute;
+	top: 563px;
+	text-align: center;
+	width: 807px;
+	color: #FF3A3A;
+	font-weight: bold;
+	font-size: 0.85em;
 }
 

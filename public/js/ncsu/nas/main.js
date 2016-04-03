@@ -86,13 +86,13 @@ var Main = (function() {
 		$("#tutor_interview").hide();	
 		$("#researcher_interview").hide();	
 		$("#complete").hide();
+		$("#error").hide();
 		
 		if( recovery == 1 ) {			
 			$("#recovery").show();		
 		}else {
 			$("#welcome").show();		
-		}
-		
+		}		
 	}
 	
 	function showWelcome() {
@@ -115,17 +115,21 @@ var Main = (function() {
 		$("#demographics").animate( { opacity: '1' }, transition_time );			
 	}
 	
-	function onDemographicsHandler() {		
+	function onDemographicsHandler() {	
+	
+		$("#error").hide();
+	
 		var age;
 		var experience;
 		var checked = $('input[name=demo_group1]').is(":checked") && $('input[name=demo_group2]').is(":checked") && $('input[name=demo_group3]').is(":checked") && $('input[name=demo_group4]').is(":checked");		
-		
 		age = $('input[id=demo_text_age]').val();
 		experience = $('input[id=demo_text_experience]').val();
 		
-		if( ( age == "" ) || ( experience == "" )  ) return;		
-		if( age < 1 || age > 100 ) return;
-		if( experience < 0 || experience > 1000 ) return;
+		if( ( age == "" ) || ( experience == "" ) || ( age < 1 || age > 100 ) || ( experience < 0 || experience > 1000 )  )  {
+			$("#error").html( "Please answer all questions before continuing." );
+			$("#error").show();
+			return;
+		}
 		
 		if( checked ) {
 			$("#demographics").animate( { opacity: '0' }, ( transition_time / 2 ), function()
