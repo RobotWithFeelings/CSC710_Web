@@ -92,7 +92,7 @@ var Main = (function() {
 			$("#recovery").show();		
 		}else {
 			$("#welcome").show();		
-		}	
+		}
 	}
 	
 	function showWelcome() {
