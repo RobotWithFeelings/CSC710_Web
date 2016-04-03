@@ -1,9 +1,8 @@
 html, body {
 	margin:0px;
 	min-width: 810px;
-	min-height: 500px;
+	min-height: 595px;
 	font-family: "arial";
-	
 	background-color: #f6f6f6;
 }
 
@@ -17,9 +16,9 @@ input { vertical-align: middle; margin-top: 0px;}
 	width:807px; 
 	height: 583px;	
 	position: absolute;
-	top: 50%;
 	left: 50%;	
-	margin: -360px 0 0 -403px;
+	margin: 0 0 0 -403px;
+	margin-top: 20px;
 }
 
 #logo {
@@ -192,7 +191,7 @@ input { vertical-align: middle; margin-top: 0px;}
 }
 
 #radioContainer2 {
-	padding-top: 25px;
+	padding-top: 18px;
 	padding-bottom: 0px;
 	padding-left: 90px;
 	width: 717px;
@@ -441,7 +440,7 @@ input { vertical-align: middle; margin-top: 0px;}
 	text-align: right;
 	padding-top: 3px;
 	width: 807px;
-	/*padding-left: 590px;*/
+	margin-bottom: 20px;
 	height: auto;
 	color: #4a4a4a;
 	font-size: 0.7em;
