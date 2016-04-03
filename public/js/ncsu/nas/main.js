@@ -88,12 +88,11 @@ var Main = (function() {
 		$("#complete").hide();
 		$("#error").hide();
 		
-		/*if( recovery == 1 ) {			
+		if( recovery == 1 ) {			
 			$("#recovery").show();		
 		}else {
 			$("#welcome").show();		
-		}		*/
-		showTutorInterview();
+		}	
 	}
 	
 	function showWelcome() {
