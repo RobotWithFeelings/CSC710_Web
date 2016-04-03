@@ -88,11 +88,12 @@ var Main = (function() {
 		$("#complete").hide();
 		$("#error").hide();
 		
-		if( recovery == 1 ) {			
+		/*if( recovery == 1 ) {			
 			$("#recovery").show();		
 		}else {
 			$("#welcome").show();		
-		}		
+		}		*/
+		showTutorInterview();
 	}
 	
 	function showWelcome() {
@@ -245,6 +246,8 @@ var Main = (function() {
 	}	
 	
 	function onFactHandler() {
+		$("#error").hide();
+		
 		if( $('input[name=radio]').is(":checked") ) {		
 			current_fact++;
 			
@@ -264,6 +267,9 @@ var Main = (function() {
 					showFactLoader();
 				} );
 			}			
+		}else {
+			$("#error").html( "Please select an answer before continuing." );
+			$("#error").show();
 		}
 	}
 	
@@ -326,6 +332,8 @@ var Main = (function() {
 	}
 
 	function onQuestionHandler() {
+		$("#error").hide();
+		
 		if( $('input[name=question_radio]').is(":checked") ) {		
 			current_question++;
 			
@@ -345,6 +353,9 @@ var Main = (function() {
 					showQuestionLoader();
 				} );
 			}			
+		}else {
+			$("#error").html( "Please select an answer before continuing." );
+			$("#error").show();
 		}
 	}
 	
@@ -473,6 +484,8 @@ var Main = (function() {
 	}	
 	
 	function onInterviewHandler() {
+		
+		$("#error").hide();
 		
 		// check if each of the questions is answered
 		var answered = true;
@@ -609,6 +622,9 @@ var Main = (function() {
 					}  
 				});
 			} );
+		}else {
+			$("#error").html( "Please rate each adjective before continuing." );
+			$("#error").show();
 		}		
 	}
 	
